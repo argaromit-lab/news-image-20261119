@@ -6,7 +6,7 @@ const item = (id, region, place, title, summary, path, lon, lat, note = '') => (
   source: 'REUTERS', date: '2026-11-19', lon, lat, note,
 });
 
-export const stories = [
+const ledger = [
   item(1, 'ASIA', 'SHENZHEN · DIPLOMACY', 'Trump, Xi & Putin\nmeet in Shenzhen',
     'China and Russia say the three agreed a “peace declaration” rejecting nuclear war.',
     'world/china/trumps-historic-meeting-with-xi-putin-headlines-asia-trip-2026-11-18/', 114.06, 22.54,
@@ -83,12 +83,42 @@ export const stories = [
     'Election reported today. Formal induction is next August and is not represented as happening today.'),
 ];
 
+// Lead and feature order, followed by the two reading columns of briefs.
+export const featuredCount = 7;
+const edition = [
+  [1, 'Trump, Xi & Putin meet in Shenzhen', 'China and Russia say the leaders backed a declaration rejecting nuclear war.'],
+  [3, 'UN court finds Myanmar committed genocide', 'The ruling orders safe returns and compensation for Rohingya.'],
+  [2, 'Saudi wealth fund tower hit in Riyadh', 'Sources cite a Houthi missile. The Saudi-led coalition reports debris and damage.'],
+  [6, 'GTA VI goes\non sale', 'Sensor Tower estimates 17m+ copies sold.'],
+  [5, 'COP31 drops\nfossil fuel text', 'The revised draft leaves out a reference to fossil fuels.'],
+  [4, 'Crimea bridge\nrail traffic halts', 'Russia says a third strike in a week halted trains.'],
+  [10, 'NASA maps\nAtacama bloom', 'A new NASA report shows Chile’s desert in bloom.'],
+  [7, 'South Korea', 'Chip boom lifts exports past $1 trillion.'],
+  [8, 'ECB', 'Eurozone banks’ data-centre lending grows.'],
+  [9, 'Senegal', 'NGO says dozens are missing after a migrant boat capsizes.'],
+  [11, 'Cricket', 'South Africa beats Bangladesh by nine wickets.'],
+  [12, 'Bangladesh', 'Protests by Hasina’s party shut down parts of the country.'],
+  [16, 'EU Commission', 'The bloc confirms a cyberattack.'],
+  [19, 'Gaza', 'Israel says its tank raid has ended.'],
+  [23, 'Brazil', 'Corn ethanol drives feedlot growth.'],
+  [28, 'Australia', 'Ash Barty is elected to the Tennis Hall of Fame.'],
+  [25, 'Markets', 'Gold rebounds from a 14-month low.'],
+  [26, 'FIFA', 'Diallo and Tashima challenge Infantino.'],
+  [14, 'Taiwan', 'Sources say TSMC tightens AI chip curbs on China.'],
+];
+
+export const stories = edition.map(([ledgerId,title,summary], index) => {
+  const source = ledger.find(story => story.id === ledgerId);
+  if (!source) throw new Error(`Unknown story ${ledgerId}`);
+  return {...source, id:index+1, art:ledgerId-1, title, summary};
+});
+
 export const regions = [
   ['ASIA','#a42c3a'], ['EUROPE','#2b5b86'], ['MIDDLE EAST','#9b4c17'],
   ['AMERICAS','#286448'], ['AFRICA','#7f5f18'], ['OCEANIA','#226a75'], ['WORLD','#555d70'],
 ].map(([name,color]) => ({name,color,count:stories.filter(s=>s.region===name).length}));
 
 export const figures = [
-  ['3 leaders','Shenzhen talks'], ['17m+ copies','GTA VI · estimate'], ['$1 trillion','Korean exports'],
-  ['1.2–1.3%','ECB · bank exposure'], ['9 wickets','South Africa wins'],
+  ['3 leaders','Shenzhen talks'], ['17m+ copies','GTA VI estimate'], ['$1 trillion','Korean exports'],
+  ['9 wickets','South Africa wins'],
 ];

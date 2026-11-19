@@ -5,7 +5,7 @@ const line = (x1,y1,x2,y2,color='#68828d',width=1) => `<line x1="${x1}" y1="${y1
 const rect = (x,y,w,h,fill,extra='') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;
 const circle = (x,y,r,fill,extra='') => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" ${extra}/>`;
 const text = (x,y,t,size=10,color='#274152',extra='') => `<text x="${x}" y="${y}" fill="${color}" font-family="Arial" font-size="${size}" ${extra}>${t}</text>`;
-const svg = (id, content, height=100) => `<svg role="img" aria-label="${id}" viewBox="0 0 320 ${height}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sky${id}" x2="0" y2="1"><stop stop-color="#c6e4ef"/><stop offset="1" stop-color="#f8e6b9"/></linearGradient><linearGradient id="glass${id}" x2="1" y2=".3"><stop stop-color="#345d78"/><stop offset=".5" stop-color="#a8cad7"/><stop offset="1" stop-color="#466a80"/></linearGradient><linearGradient id="sea${id}" x2="0" y2="1"><stop stop-color="#91c9d5"/><stop offset="1" stop-color="#477f9b"/></linearGradient></defs>${rect(0,0,320,height,`url(#sky${id})`)}${content}</svg>`;
+const svg = (id, content, height=100) => `<svg role="img" aria-label="${id}" viewBox="0 0 320 ${height}" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sky${id}" x2="0" y2="1"><stop stop-color="#c6e4ef"/><stop offset="1" stop-color="#f8e6b9"/></linearGradient><linearGradient id="glass${id}" x2="1" y2=".3"><stop stop-color="#345d78"/><stop offset=".5" stop-color="#a8cad7"/><stop offset="1" stop-color="#466a80"/></linearGradient><linearGradient id="sea${id}" x2="0" y2="1"><stop stop-color="#91c9d5"/><stop offset="1" stop-color="#477f9b"/></linearGradient></defs>${rect(0,0,320,height,`url(#sky${id})`)}${content}</svg>`;
 
 function flag(x,y,country) {
   let cloth = '';
@@ -66,15 +66,22 @@ function court() {
 }
 
 function bridge() {
-  let supports='';for(let x=35;x<310;x+=35) supports+=path(`M${x} 62L${x-5} 85H${x+7}L${x+3} 62Z`,'#708f99');
-  return svg('Crimea',rect(0,55,320,45,'url(#seaCrimea)')+
+  let supports='';for(let x=35;x<310;x+=35) supports+=path(`M${x} 62L${x-5} 85H${x+7}L${x+3} 62Z`,'#547684');
+  let ripples='';
+  for(let i=0;i<34;i++){
+    const x=i*47%307, y=70+i*11%29;
+    ripples+=line(x,y,x+10,y,i%2?'#d2eef0':'#45778f',.7);
+  }
+  let truss='';
+  for(let x=105;x<198;x+=12) truss+=line(x,60,x+12,33+Math.abs(x-148)*.25,'#cbd6d5',.9);
+  return svg('Crimea',rect(0,55,320,45,'url(#seaCrimea)')+ripples+
     path('M0 15H77L105 22L84 35L76 53L47 61L0 58Z','#dfd6b8')+
     path('M269 15H320V69L285 58L262 42L250 28Z','#dfd6b8')+
     supports+path('M20 62L295 58L297 63L20 67Z','#526d7d')+
     path('M92 60Q150 0 211 59','none','stroke="#f4f5ed" stroke-width="4"')+
     line(105,48,105,61,'#f4f5ed')+line(127,29,127,61,'#f4f5ed')+line(151,22,151,59,'#f4f5ed')+line(177,31,177,59,'#f4f5ed')+line(199,46,199,58,'#f4f5ed')+
-    text(10,25,'CRIMEA',11)+text(228,25,'RUSSIA',11)+text(98,91,'KERCH STRAIT',11)+
-    rect(205,45,55,11,'#b82136')+text(211,53,'RAIL HALTED',7,'white'));
+    truss+text(10,29,'CRIMEA',11)+text(268,29,'RUSSIA',11)+text(98,94,'KERCH STRAIT',11)+
+    rect(224,43,74,15,'#9e1831')+text(232,54,'RAIL HALTED',9,'white','font-weight="bold"'));
 }
 
 function climate() {
@@ -87,10 +94,15 @@ function climate() {
 }
 
 function gaming() {
-  let city='';for(let i=0;i<13;i++){const x=i*26;const h=[18,29,42,20,35,47,28,38,25,50,31,36,19][i];city+=rect(x,91-h,20,h,'#326f82');for(let y=96-h;y<85;y+=8) city+=rect(x+4,y,3,3,'#f2d4a2');}
+  let city='';for(let i=0;i<13;i++){
+    const x=i*26,h=[18,29,42,20,35,47,28,38,25,50,31,36,19][i];
+    city+=rect(x,91-h,20,h,i%2?'#45446a':'#355571')+rect(x+15,91-h,5,h,'#27384f');
+    for(let y=96-h;y<85;y+=8) for(let col=0;col<3;col++) city+=rect(x+3+col*4,y,2,3,(col+i)%2?'#ffc88b':'#91c8e3');
+  }
   const palm=x=>path(`M${x} 95Q${x-6} 65 ${x+3} 31Q${x-12} 25 ${x-24} 34Q${x-15} 16 ${x+4} 25Q${x+10} 9 ${x+28} 20Q${x+13} 20 ${x+7} 29Q${x+28} 24 ${x+37} 43Q${x+16} 31 ${x+6} 33Q${x} 67 ${x+5} 96Z`,'#214d59');
-  return svg('Gaming',rect(0,0,320,100,'#f6d8c9')+circle(162,53,33,'#efa266')+city+palm(40)+palm(272)+
-    rect(0,91,320,9,'#214d59')+text(160,40,'GTA VI',22,'#183b50','text-anchor="middle" font-weight="bold"')+text(160,59,'OUT TODAY',10,'#183b50','text-anchor="middle" font-weight="bold"'));
+  return svg('Gaming',`<defs><linearGradient id="viceSky" x2="0" y2="1"><stop stop-color="#563f77"/><stop offset="1" stop-color="#e6826e"/></linearGradient></defs>`+
+    rect(0,0,320,100,'url(#viceSky)')+circle(162,56,36,'#ffbd80')+city+palm(40)+palm(272)+
+    rect(0,91,320,9,'#263d54')+text(160,48,'GTA VI',27,'#fff3df','text-anchor="middle" font-weight="bold" stroke="#452f54" stroke-width="1" paint-order="stroke"'));
 }
 
 function chips() {
@@ -152,23 +164,23 @@ const land = [
   [[166,-35],[175,-39],[171,-46],[166,-45]], [[145,-41],[149,-42],[147,-44]],
 ];
 
-export function worldMap(stories) {
+export function worldMap(stories, featuredCount) {
   const project=(lon,lat)=>[13+(lon+180)/360*334,14+(82-lat)/140*138];
   const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d8c7a2','stroke="#9eacaa" stroke-width=".55"')).join('');
   let grid='';for(let lat=-40;lat<=60;lat+=20){const [,y]=project(0,lat);grid+=line(8,y,352,y,'#cadce1',.55);}
   // Label positions are deliberately spread; connecting lines retain geography.
-  const labels={1:[291,56],2:[250,85],3:[273,94],4:[235,38],5:[208,62],6:[85,67],7:[327,38],8:[177,36],9:[163,85],10:[98,134],11:[217,143]};
-  let pins='';
-  for(const story of stories.slice(11)) {
-    let [x,y]=project(story.lon,story.lat);
-    // Brief dots sit near the corresponding continent with deterministic offsets.
-    const offsets={12:[-6,4],13:[8,0],14:[9,7],15:[1,-2],16:[-3,-7],17:[0,0],18:[8,0],19:[-6,-3],20:[0,4],21:[0,0],22:[5,2],23:[0,0],24:[0,0],25:[0,0],26:[3,4],27:[-2,-8],28:[0,0]};
-    const [dx,dy]=offsets[story.id];x+=dx;y+=dy;
-    pins+=circle(x,y,2.8,'#334e66','stroke="#fff" stroke-width=".6"');
-  }
-  for(const story of stories.slice(0,11)) {
-    const [x,y]=project(story.lon,story.lat),[lx,ly]=labels[story.id];
-    pins+=line(x,y,lx,ly,'#9e4b55',.7)+circle(x,y,1.6,'#ad2939')+circle(lx,ly,7.4,'#b82136','stroke="#fff" stroke-width="1"')+text(lx,ly+2.9,String(story.id),8.4,'#fff','text-anchor="middle" font-weight="bold"');
-  }
-  return `<svg viewBox="0 0 360 164" xmlns="http://www.w3.org/2000/svg" aria-label="Six continents with eleven red numbered story pins and seventeen brief dots">${grid}${coast}${text(25,39,'N. AMERICA',8,'#536978')}${text(92,109,'S. AMERICA',8,'#536978')}${text(167,22,'EUROPE',8,'#536978')}${text(186,107,'AFRICA',8,'#536978')}${text(272,24,'ASIA',8,'#536978')}${text(291,153,'OCEANIA',8,'#536978')}${pins}</svg>`;
+  const labels={SHENZHEN:[308,52],MYANMAR:[278,91],RIYADH:[236,84],GLOBAL:[83,82],ANTALYA:[194,65],CRIMEA:[233,35],CHILE:[95,130]};
+  const leadPins=stories.slice(0,featuredCount).map(story=>{
+    const [x,y]=project(story.lon,story.lat);
+    const [lx,ly]=labels[story.place.split(' · ')[0]];
+    const color='#a42238';
+    return line(x,y,lx,ly,'#fff',2.6)+line(x,y,lx,ly,color,1.2)+circle(x,y,2.5,color,'stroke="#fff" stroke-width=".8"')+
+      circle(lx,ly,9,color,'stroke="#fff" stroke-width="1.25"')+
+      text(lx,ly+3.8,String(story.id),11,'#fff','text-anchor="middle" font-weight="bold"');
+  }).join('');
+  const dots=stories.slice(featuredCount).map(story=>{
+    const [x,y]=project(story.lon,story.lat);
+    return circle(x,y,3,'#334e66','stroke="#fff" stroke-width=".85"');
+  }).join('');
+  return `<svg role="img" viewBox="0 0 360 164" xmlns="http://www.w3.org/2000/svg" aria-label="World map with ${featuredCount} numbered feature pins and ${stories.length-featuredCount} brief locations">${grid}${coast}${text(25,39,'N. AMERICA',8,'#324f61')}${text(92,109,'S. AMERICA',8,'#324f61')}${text(166,22,'EUROPE',8,'#324f61')}${text(174,101,'AFRICA',8,'#324f61')}${text(272,24,'ASIA',8,'#324f61')}${text(293,148,'OCEANIA',8,'#324f61')}${dots}${leadPins}</svg>`;
 }

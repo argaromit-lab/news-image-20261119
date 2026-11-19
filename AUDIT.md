@@ -1,6 +1,22 @@
 # Review checkpoint · 19 November 2026
 
-The image is built and locally verified. Submission is paused for the owner's visual review.
+## Readability revision
+
+The current image covers 19 stories across seven regions with seven illustrated cards and 12 briefs. It uses 28 px lead headlines, 25 px secondary headlines, and 15 px brief type. Seven numbered pins link directly to the featured cards. The final map review corrected the positions of the GTA VI and Crimea pin labels. The revision uses the EU Commission cyberattack brief in place of the Greenland ratification brief, whose outcome could not be rechecked.
+
+| Check | Current result |
+| --- | --- |
+| PNG | 1024 × 1024, 631,820 bytes, complete chunks and valid CRCs |
+| SHA-256 | `ea8211c7b9a035c6cf6ba7c14274f7290960959c3d3f2f45d4d20c76cfe2bb96` |
+| Browser geometry | 110 text runs, zero problems |
+| Runtime | Two local Node processes and two fresh offline Linux Node 22 containers produced identical bytes |
+| Anti-slop | PASS, severity 0, gating 0, 17 editorial advisories, no external stylesheets |
+
+The comparison used `@izayoi-20`'s **Precise Lemma**, whose public leaderboard rate was 99.2290% at review time. Three focused passes addressed typography and clipping, illustration detail, and map and brief hierarchy. The final vision audits scored the revision 58/100 on Groq and 78/100 on Mistral. Both critics favored the reference's wider coverage and found the revision's hierarchy easier to scan. These are local critic scores. The revision is held for review before submission.
+
+## Previous 28-story checkpoint
+
+The following records describe the previous build, whose PNG had the SHA-256 shown below.
 
 | Check | Result |
 | --- | --- |
