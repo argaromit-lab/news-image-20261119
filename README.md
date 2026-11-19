@@ -4,7 +4,7 @@
 [![rank](https://make.fun/badge/news-image-20261119/argaromit-lab/news-image-20261119/rank.svg)](https://make.fun/bounty/news-image-20261119/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 [![reward](https://make.fun/badge/news-image-20261119/argaromit-lab/news-image-20261119/reward.svg)](https://make.fun/bounty/news-image-20261119?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261119)
 
-An original editorial front page of Thursday 19 November 2026 with 19 attributed stories across seven regions. Seven vector illustrations, four numerical callouts, and a six-continent map anchor the page. Built for the make.fun bounty **Sum up 19 November's world news in one image**.
+An original editorial front page of Thursday 19 November 2026 with 28 attributed stories across seven regions. Eleven vector illustrations, four numerical callouts, and a six-continent map anchor the page. Built for the make.fun bounty **Sum up 19 November's world news in one image**.
 
 ![Thursday 19 November 2026: world news front page](entry.png)
 
@@ -37,7 +37,7 @@ The builder writes a full-size capture, a 300px preview, the rendered HTML, sour
 
 ## Editorial sourcing
 
-The edition in [`stories.mjs`](stories.mjs) selects 19 entries from the editorial ledger. Each selected entry carries its source URL, geographical coordinates, and any date or attribution notes. The page credits Reuters and NASA.
+The edition in [`stories.mjs`](stories.mjs) lists each story's source URL, any applicable map coordinates, and date or attribution notes. The footer credits Reuters, AP, AFP, Al Jazeera, and NASA from that ledger.
 
 The Shenzhen and GTA VI articles have rolling URLs beginning on 18 November; their text explicitly dates the summit and game rollout to Thursday 19 November. The declaration is attributed to China and Russia, the Riyadh attribution to sources and the Saudi-led coalition, the bridge interruption to Russian authorities, and the boat report to a local NGO. GTA VI's 17m-plus copies and $1.65bn are Sensor Tower estimates at report time, not final audited daily sales.
 
@@ -45,7 +45,7 @@ NASA's new Atacama report is dated 19 November. Its September and October satell
 
 The date banner excludes the 18 November Voyager milestone, EU €45bn loan proposal, Fed minutes, and House Democrats' Jeffries vote. Fiji's drought declaration is also excluded because the article dates the address to Wednesday. The image does not claim a final market close or results of future fixtures.
 
-Three lead cards and four secondary cards sit above the locator map and 12 briefs in two columns. The lead and secondary headlines use 28 px and 25 px type. The 300 px preview prioritizes headlines and figures, while the full image carries the complete brief copy.
+Three lead cards and two rows of four secondary cards sit above the locator map and 17 briefs in two columns. The lead and secondary headlines use 27 px and 20 px type. The 300 px preview prioritizes headlines and figures, while the full image carries the complete brief copy.
 
 ## License
 

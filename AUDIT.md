@@ -1,6 +1,20 @@
 # Review checkpoint · 19 November 2026
 
-## Readability revision
+## Attribution and illustration polish
+
+The footer is derived from the edition's source ledger. Al Jazeera supports the 9–6 ICJ vote and the Nasdaq trading debut. AP and AFP support the Bangladesh brief. The Riyadh brief follows Reuters reporting published by Al Jazeera. The Anthropic brief distinguishes the $83 offer price from the $111 trading debut, with an $81.3bn gross offering that includes shares sold by existing holders.
+
+The summit art adds three nameplates, the court art displays the 9–6 vote, and the COP31 draft has a red CUT stamp. The numbered Shenzhen and Seoul badges moved closer to their geographic anchors. The revised PNG is 714,704 bytes at 1024 × 1024. Chromium checked 131 text runs with zero geometry problems. Two local Node runs and an offline Linux Node 22 run matched the PNG (`82f020e373d5b63ee2c6592e3d5fe75cc0ccfadcd792eff79e47beeba43285e1`). Anti-slop passed with zero gating issues and 29 editorial advisories. The local vision reviews scored 52/100 on Groq and 78/100 on Mistral against the leaderboard reference.
+
+## Expanded coverage revision
+
+Hale Apex scored 98.4446% provisionally against the house images, compared with 98.6947% for Marine Helix. Both won 12 of 12 matches and their 90% intervals overlap. The official API reported `heat_closed: before_deadline`, so individual verdicts did not inform this revision. The published judging criteria give breadth priority over visual craft.
+
+This revision restores 28 stories and 11 illustrations, retains 27 px lead headlines, and adds the November 19 NASA report about a method for finding pulsars. COP31 becomes a lead story, while the secondary rows restore migration, science, exports, and cricket to the illustrated coverage. The map has 11 numbered pins and 16 terrestrial brief locations. Three visual passes addressed coverage, the figures strip and export illustration, and card hierarchy.
+
+The PNG is 1024 × 1024 and 697,068 bytes. Chromium checked 130 text runs and reported zero geometry problems. Two local Node processes and two offline Node 22 Linux containers produced identical bytes (`1b91d171514c711d907ca02149ac52b15337f15a06e6d5293e18106a765bb7de`). Anti-slop passed with zero gating issues and 28 advisories. Against `@hazel-harbor-63`'s leaderboard-leading image, the final local reviews scored 58/100 on Groq and 78/100 on Mistral. Map numbers and narrative detail remained weaker in those comparisons.
+
+## Hale Apex readability revision
 
 The current image covers 19 stories across seven regions with seven illustrated cards and 12 briefs. It uses 28 px lead headlines, 25 px secondary headlines, and 15 px brief type. Seven numbered pins link directly to the featured cards. The final map review corrected the positions of the GTA VI and Crimea pin labels. The revision uses the EU Commission cyberattack brief in place of the Greenland ratification brief, whose outcome could not be rechecked.
 

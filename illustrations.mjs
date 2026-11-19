@@ -30,12 +30,15 @@ function summit() {
     for(let wy=y+5;wy<y+h;wy+=6) windows+=line(x+3,wy,x+w-3,wy,'#d4e4e9',.7);
   }
   const person=(x,hair,tie,shape) => `<g transform="translate(${x} 40)">${path('M-22 50L-19 34Q-17 28 -7 26L7 26Q17 28 19 34L22 50Z','#22364e')}${path('M-8 27L0 41L8 27Z','#fff')}${path('M-2 32L2 32L4 46L0 49L-4 46Z',tie)}${path('M-7 6Q-10 11 -8 20Q-6 27 0 28Q7 27 9 20L10 9Z','#d9a886')}${path(shape,hair)}${line(-5,15,-2,15,'#624d48',.8)}${line(3,15,6,15,'#624d48',.8)}${path('M-3 22Q1 24 4 21','none','stroke="#aa725f" stroke-width=".8"')}</g>`;
+  const nameplates=[[77,'TRUMP'],[161,'XI'],[246,'PUTIN']].map(([x,name])=>
+    rect(x-25,80,50,18,'#152e40','stroke="#e3c699" stroke-width=".8"')+
+    text(x,93,name,13,'#fff7e4','text-anchor="middle" font-weight="bold"')).join('');
   return svg('Shenzhen',windows+path('M0 84Q45 70 79 81Q111 72 142 81Q211 69 255 78L320 76V100H0Z','#8cb3ab')+
     flag(60,15,'US')+flag(145,15,'CN')+flag(233,15,'RU')+
     person(77,'#d7bc6d','#bc2f40','M-10 13Q-14 0 0 0Q10 -3 13 7L5 8L-3 5L-9 14Z')+
     person(161,'#29343a','#af3040','M-10 13Q-11 -1 0 0Q12 -1 11 13L7 7L-6 5Z')+
     person(246,'#ad9d87','#596f91','M-10 14Q-13 4 -5 2L-3 6L-7 9L-7 15ZM9 15L8 6L4 3Q14 4 11 15Z')+
-    path('M30 92Q160 72 290 92L280 100H40Z','#415b65')+line(40,94,280,94,'#c1cfce',1));
+    path('M30 92Q160 72 290 92L280 100H40Z','#415b65')+line(40,94,280,94,'#c1cfce',1)+nameplates);
 }
 
 function tower() {
@@ -62,7 +65,9 @@ function court() {
     circle(160,39,8,'#fbf4de','stroke="#a48b5b" stroke-width="1"')+line(160,39,160,34,'#766247')+line(160,39,165,41,'#766247')+
     rect(147,62,26,22,'#506e7b')+path('M147 64Q160 46 173 64Z','#506e7b')+
     text(16,25,'THE HAGUE',10)+line(17,29,17,55,'#677d8a',1.2)+rect(17,31,18,12,'#4f8aa6')+
-    circle(26,37,4,'none','stroke="white" stroke-width=".8"')+line(25,89,296,89,'#8e9d94',1));
+    circle(26,37,4,'none','stroke="white" stroke-width=".8"')+line(25,89,296,89,'#8e9d94',1)+
+    rect(199,10,91,27,'#243e53','stroke="#eddcc1" stroke-width="1"')+
+    text(212,29,'ICJ',12,'#fff3d7','font-weight="bold"')+text(254,30,'9–6',19,'#fff','text-anchor="middle" font-weight="bold"'));
 }
 
 function bridge() {
@@ -88,9 +93,10 @@ function climate() {
   let turbines='';for(const [x,y] of [[42,45],[83,37],[119,50]]) turbines+=line(x,y,x,84,'#496e70',2)+line(x,y,x-14,y-7,'#496e70',2)+line(x,y,x+12,y-10,'#496e70',2)+line(x,y,x+3,y+16,'#496e70',2);
   return svg('COP31',circle(260,30,19,'#eac570')+path('M0 76Q70 40 149 69Q240 45 320 69V100H0Z','#91b49d')+
     path('M0 89Q95 70 170 84Q255 66 320 82V100H0Z','#638b71')+turbines+
-    path('M182 21L231 25L227 84L178 79Z','#fffef4','stroke="#7f9b8f" stroke-width="1"')+
-    text(187,40,'COP31',13,'#2d5d4e','font-weight="bold"')+line(188,49,222,52,'#bacac2',2)+line(187,57,219,60,'#bacac2',2)+
-    text(184,70,'DRAFT',9,'#a62b3a'));
+    rect(174,14,110,73,'#fffef4','stroke="#7f9b8f" stroke-width="1"')+
+    text(184,34,'COP31 DRAFT',13,'#2d5d4e','font-weight="bold"')+
+    text(184,54,'FOSSIL FUELS',12,'#526763','font-weight="bold"')+line(182,49,272,49,'#9e1831',1.6)+
+    `<g transform="rotate(-11 254 69)">${rect(229,57,50,23,'#fffef4','stroke="#9e1831" stroke-width="2.2"')}${text(254,74,'CUT',17,'#9e1831','text-anchor="middle" font-weight="bold"')}</g>`);
 }
 
 function gaming() {
@@ -106,12 +112,18 @@ function gaming() {
 }
 
 function chips() {
-  let circuitry='';
-  for(let i=0;i<7;i++) circuitry+=line(104+i*10,26,104+i*10,14,'#7b9e9b',2)+line(104+i*10,74,104+i*10,88,'#7b9e9b',2)+line(91,33+i*6,74,33+i*6,'#7b9e9b',2)+line(178,33+i*6,195,33+i*6,'#7b9e9b',2);
-  return svg('Korea',circuitry+rect(91,26,87,48,'#2a5b60','rx="4"')+rect(101,34,67,32,'#78a8a0')+text(134,55,'AI',20,'#fff','text-anchor="middle" font-weight="bold"')+
-    rect(218,24,76,47,'#fff','stroke="#ced8d6"')+circle(256,47,13,'#b82d40')+path('M243 47A13 13 0 0 0 269 47Q261 57 256 47Q249 37 243 47Z','#326591')+
-    line(229,33,235,29,'#1f3549',2)+line(229,38,238,32,'#1f3549',2)+line(273,61,281,55,'#1f3549',2)+
-    text(17,70,'EXPORTS',10)+path('M17 54L35 44L48 49L64 28','none','stroke="#ad2738" stroke-width="3"')+path('M57 29L65 25L65 34Z','#ad2738'));
+  const container=(x,y,fill)=>rect(x,y,29,11,fill,'stroke="#273747" stroke-width=".6"')+
+    [4,9,14,19,24].map(offset=>line(x+offset,y+2,x+offset,y+9,'#26394a',.55)).join('');
+  const cargo=[['#e6ba63','#b64b48','#7f9bae','#e6ba63','#6b9e93'],['#6b9e93','#ac474c','#e6ba63','#7f9bae']]
+    .map((row,index)=>row.map((fill,i)=>container(65+i*29+(index?29:0),61-index*11,fill)).join('')).join('');
+  let cranes='';
+  for(const x of [48,132,228]) cranes+=path(`M${x} 68V21H${x+47}L${x+54} 28H${x+6}V68Z`,'#557283')+
+    line(x+36,28,x+36,43,'#52636e',1.1)+rect(x+28,43,16,4,'#8c5849');
+  const flag=rect(268,19,29,19,'#fff')+circle(282.5,28.5,5,'#af283d')+
+    path('M277.5 28.5A5 5 0 0 0 287.5 28.5Q285 32 282.5 28.5Q280 25 277.5 28.5Z','#28608b');
+  return svg('Korea',rect(0,69,320,31,'#6d9eac')+cranes+
+    path('M37 72H260L244 88H61Z','#18354b')+path('M55 86H246L240 91H62Z','#9d3742')+
+    rect(212,55,19,17,'#eaf2f2')+rect(215,58,13,3,'#587d91')+cargo+flag);
 }
 
 function bank() {
@@ -169,7 +181,7 @@ export function worldMap(stories, featuredCount) {
   const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d8c7a2','stroke="#9eacaa" stroke-width=".55"')).join('');
   let grid='';for(let lat=-40;lat<=60;lat+=20){const [,y]=project(0,lat);grid+=line(8,y,352,y,'#cadce1',.55);}
   // Label positions are deliberately spread; connecting lines retain geography.
-  const labels={SHENZHEN:[308,52],MYANMAR:[278,91],RIYADH:[236,84],GLOBAL:[83,82],ANTALYA:[194,65],CRIMEA:[233,35],CHILE:[95,130]};
+  const labels={SHENZHEN:[298,65],MYANMAR:[283,91],RIYADH:[235,88],GLOBAL:[95,83],ANTALYA:[213,72],CRIMEA:[231,36],CHILE:[99,130],SEOUL:[302,43],SENEGAL:[151,82],FRANKFURT:[179,49],JOHANNESBURG:[222,133]};
   const leadPins=stories.slice(0,featuredCount).map(story=>{
     const [x,y]=project(story.lon,story.lat);
     const [lx,ly]=labels[story.place.split(' · ')[0]];
@@ -178,9 +190,10 @@ export function worldMap(stories, featuredCount) {
       circle(lx,ly,9,color,'stroke="#fff" stroke-width="1.25"')+
       text(lx,ly+3.8,String(story.id),11,'#fff','text-anchor="middle" font-weight="bold"');
   }).join('');
-  const dots=stories.slice(featuredCount).map(story=>{
+  const mappedBriefs=stories.slice(featuredCount).filter(story=>story.lon!==null);
+  const dots=mappedBriefs.map(story=>{
     const [x,y]=project(story.lon,story.lat);
     return circle(x,y,3,'#334e66','stroke="#fff" stroke-width=".85"');
   }).join('');
-  return `<svg role="img" viewBox="0 0 360 164" xmlns="http://www.w3.org/2000/svg" aria-label="World map with ${featuredCount} numbered feature pins and ${stories.length-featuredCount} brief locations">${grid}${coast}${text(25,39,'N. AMERICA',8,'#324f61')}${text(92,109,'S. AMERICA',8,'#324f61')}${text(166,22,'EUROPE',8,'#324f61')}${text(174,101,'AFRICA',8,'#324f61')}${text(272,24,'ASIA',8,'#324f61')}${text(293,148,'OCEANIA',8,'#324f61')}${dots}${leadPins}</svg>`;
+  return `<svg role="img" viewBox="0 0 360 164" xmlns="http://www.w3.org/2000/svg" aria-label="World map with ${featuredCount} numbered feature pins and ${mappedBriefs.length} brief locations">${grid}${coast}${text(25,39,'N. AMERICA',8,'#324f61')}${text(92,109,'S. AMERICA',8,'#324f61')}${text(166,22,'EUROPE',8,'#324f61')}${text(174,101,'AFRICA',8,'#324f61')}${text(272,24,'ASIA',8,'#324f61')}${text(293,148,'OCEANIA',8,'#324f61')}${dots}${leadPins}</svg>`;
 }

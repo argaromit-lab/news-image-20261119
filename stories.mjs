@@ -81,36 +81,54 @@ const ledger = [
   item(28, 'OCEANIA', 'Australia', 'Barty elected to Hall of Fame', 'Barty wins Hall of Fame election.',
     'sports/tennis/barty-humbled-join-absolute-legends-tennis-hall-fame-2026-11-19/', 153, -27,
     'Election reported today. Formal induction is next August and is not represented as happening today.'),
+  {id:29, region:'AMERICAS', place:'New York', source:'Al Jazeera', date:'2026-11-19',
+    url:'https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo', lon:-73.99, lat:40.76,
+    note:'ANT began Nasdaq trading on 19 Nov at $111. The $83 IPO price was announced on 18 Nov. The $81.3bn gross offering includes stock sold by existing holders and is distinct from the company valuation.'},
 ];
 
+const updatedSources = {
+  2:{url:'https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south'},
+  3:{source:'Al Jazeera',url:'https://www.aljazeera.com/news/2026/11/19/un-top-court-finds-myanmar-killed-10000-rohingya-as-it-rules-on-genocide'},
+  12:{source:'AP · AFP',url:'https://www.aljazeera.com/news/2026/11/19/home-of-bangladeshs-former-leader-muhammad-yunus-set-on-fire'},
+};
+
 // Lead and feature order, followed by the two reading columns of briefs.
-export const featuredCount = 7;
+export const featuredCount = 11;
 const edition = [
-  [1, 'Trump, Xi & Putin meet in Shenzhen', 'China and Russia say the leaders backed a declaration rejecting nuclear war.'],
-  [3, 'UN court finds Myanmar committed genocide', 'The ruling orders safe returns and compensation for Rohingya.'],
-  [2, 'Saudi wealth fund tower hit in Riyadh', 'Sources cite a Houthi missile. The Saudi-led coalition reports debris and damage.'],
-  [6, 'GTA VI goes\non sale', 'Sensor Tower estimates 17m+ copies sold.'],
-  [5, 'COP31 drops\nfossil fuel text', 'The revised draft leaves out a reference to fossil fuels.'],
-  [4, 'Crimea bridge\nrail traffic halts', 'Russia says a third strike in a week halted trains.'],
-  [10, 'NASA maps\nAtacama bloom', 'A new NASA report shows Chile’s desert in bloom.'],
-  [7, 'South Korea', 'Chip boom lifts exports past $1 trillion.'],
-  [8, 'ECB', 'Eurozone banks’ data-centre lending grows.'],
-  [9, 'Senegal', 'NGO says dozens are missing after a migrant boat capsizes.'],
-  [11, 'Cricket', 'South Africa beats Bangladesh by nine wickets.'],
-  [12, 'Bangladesh', 'Protests by Hasina’s party shut down parts of the country.'],
+  [1, 'Trump, Xi & Putin meet in Shenzhen', 'China and Russia say the leaders endorsed a declaration rejecting nuclear war.'],
+  [3, 'ICJ finds Myanmar committed genocide', 'The UN court orders safe returns and compensation for Rohingya.'],
+  [5, 'COP31 draft drops fossil fuel language', 'The revised text omits fossil fuels as negotiators seek a deal in Antalya.'],
+  [2, 'Riyadh fund tower hit', 'Coalition reports Houthi missile intercepts. Debris damages tower.'],
+  [4, 'Crimea bridge rail traffic halts', 'Russia reports the third strike in a week.'],
+  [6, 'GTA VI goes on sale worldwide', 'Sensor Tower estimates 17m+ copies sold.'],
+  [7, 'South Korea hits $1tn in exports', 'The AI chip boom helps lift exports.'],
+  [9, 'Dozens missing off Senegal', 'An NGO says a migrant boat capsized.'],
+  [8, 'ECB tracks growing AI lending', 'Data centres are 1.2–1.3% of corporate exposures.'],
+  [10, 'NASA maps Chile’s desert bloom', 'Landsat images show the Atacama in flower.'],
+  [11, 'South Africa wins first Test', 'It beats Bangladesh by nine wickets.'],
+  [12, 'Bangladesh', 'Hasina supporters set fire to Yunus’s ancestral home.'],
+  [13, 'South Korea', 'Court overturns Han’s jail term.'],
+  [14, 'Taiwan', 'Sources say TSMC tightens China chip curbs.'],
+  [15, 'China', 'Alibaba beats quarterly revenue estimates.'],
   [16, 'EU Commission', 'The bloc confirms a cyberattack.'],
+  [18, 'Iran', 'Western powers seek nuclear inspections.'],
   [19, 'Gaza', 'Israel says its tank raid has ended.'],
+  [20, 'Iraq', 'Officials report a militia compromise.'],
+  [21, 'Africa', 'Mo Ibrahim urges domestic funding.'],
+  [22, 'Ethiopia', 'The flag carrier probes a loyalty-program breach.'],
   [23, 'Brazil', 'Corn ethanol drives feedlot growth.'],
-  [28, 'Australia', 'Ash Barty is elected to the Tennis Hall of Fame.'],
+  [24, 'Venezuela', 'Delegates pitch AI for cleaner oil at COP31.'],
   [25, 'Markets', 'Gold rebounds from a 14-month low.'],
   [26, 'FIFA', 'Diallo and Tashima challenge Infantino.'],
-  [14, 'Taiwan', 'Sources say TSMC tightens AI chip curbs on China.'],
+  [27, 'Korean peninsula', 'Lee calls for renewed talks with the North.'],
+  [28, 'Tennis', 'Ash Barty is elected to the Hall of Fame.'],
+  [29, 'Nasdaq', 'Anthropic opens at $111 after an $81.3bn IPO priced at $83 a share.'],
 ];
 
 export const stories = edition.map(([ledgerId,title,summary], index) => {
   const source = ledger.find(story => story.id === ledgerId);
   if (!source) throw new Error(`Unknown story ${ledgerId}`);
-  return {...source, id:index+1, art:ledgerId-1, title, summary};
+  return {...source, ...updatedSources[ledgerId], id:index+1, art:ledgerId-1, title, summary};
 });
 
 export const regions = [
@@ -119,6 +137,6 @@ export const regions = [
 ].map(([name,color]) => ({name,color,count:stories.filter(s=>s.region===name).length}));
 
 export const figures = [
-  ['3 leaders','Shenzhen talks'], ['17m+ copies','GTA VI estimate'], ['$1 trillion','Korean exports'],
+  ['17m+ copies','GTA VI estimate'], ['$1 trillion','South Korean exports'], ['1.2–1.3%','ECB · data-centre exposure'],
   ['9 wickets','South Africa wins'],
 ];

@@ -9,50 +9,53 @@
 *{box-sizing:border-box}
 html,body{margin:0;width:1024px;height:1024px;background:var(--paper);color:var(--ink)}
 body{font-family:Arial,sans-serif;-webkit-font-smoothing:antialiased}
-.page{width:1024px;height:1024px;padding:12px 16px 10px;display:grid;grid-template-rows:106px 30px 53px 260px 212px 282px 38px 21px}
-.masthead{background:var(--navy);color:#fff;display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;align-items:center;padding:10px 14px}
+.page{width:1024px;height:1024px;padding:12px 16px 10px;display:grid;grid-template-rows:92px 28px 47px 214px 150px 154px 262px 34px 21px}
+.masthead{background:var(--navy);color:#fff;display:grid;grid-template-columns:80px minmax(0,1fr);gap:14px;align-items:center;padding:5px 14px}
 .calendar{background:var(--red);text-align:center;padding:5px 0;display:grid}
 .calendar .month{font-size:16px;font-weight:800;line-height:1.25}
-.calendar .date{font:700 44px/1.05 Georgia,serif}
+.calendar .date{font:700 38px/1.05 Georgia,serif}
 .calendar .year{font-size:13px;line-height:1.3;font-weight:700}
 h1{font:700 51px/1.15 Georgia,serif;margin:0 0 6px;white-space:nowrap}
 .subtitle{font-size:16px;line-height:1.25;margin:0;color:#f1f5f9;font-weight:700}
-.regions{display:grid;grid-template-rows:6px 20px;gap:2px;padding:3px 0 1px}
+.regions{display:grid;grid-template-rows:5px 18px;gap:2px;padding:2px 0 1px}
 .distribution{display:flex}
 .region-keys{display:grid;grid-template-columns:repeat(7,1fr)}
 .region{color:var(--ink);text-align:center;font-size:13px;font-weight:800;line-height:20px;white-space:nowrap}
-.numbers{display:grid;grid-template-columns:179px repeat(4,1fr);background:var(--navy);color:white;align-items:center;margin-bottom:7px;padding:1px 5px}
-.numbers-title{font-size:14px;line-height:1.3;font-weight:800;padding-left:8px}
-.figure{border-left:1px solid #667085;text-align:center;padding:0 4px}
-.figure strong{font:700 27px/1 Georgia,serif;color:#fff;display:block;white-space:nowrap}
-.figure span{font-size:13px;line-height:1.25;display:block;margin-top:1px;color:#fff}
-.stories{display:grid;gap:10px;padding-bottom:8px}
+.numbers{display:grid;grid-template-columns:185px repeat(4,1fr);background:#eaf0f4;color:var(--navy);align-items:center;margin-bottom:5px;padding:1px 5px}
+.numbers-title{font-size:14px;line-height:1.3;font-weight:800;padding-left:8px;white-space:nowrap}
+.figure{border-left:1px solid #b1bec9;text-align:center;padding:0 4px}
+.figure strong{font:700 24px/1 Georgia,serif;color:#951d35;display:block;white-space:nowrap}
+.figure span{font-size:13px;line-height:1.25;display:block;color:var(--navy)}
+.stories{display:grid;gap:10px;padding-bottom:6px}
 .leads{grid-template-columns:1.12fr 1fr 1fr}
 .medium{grid-template-columns:repeat(4,minmax(0,1fr))}
 .story{min-width:0;background:#f1f4f6;display:flex;flex-direction:column}
-.story[data-story="2"],.story[data-story="5"]{background:#eef3ee}
-.story[data-story="3"],.story[data-story="7"]{background:#f7efe7}
-.story[data-story="4"]{background:#f4edf2}
-.art{height:92px;flex-shrink:0;overflow:hidden;background:#e4edf1}
+.story[data-story="2"],.story[data-story="4"],.story[data-story="8"]{background:#f7efe7}
+.story[data-story="3"],.story[data-story="10"]{background:#eef3ee}
+.story[data-story="6"],.story[data-story="11"]{background:#f4edf2}
+.art{height:77px;flex-shrink:0;overflow:hidden;background:#e4edf1}
 .art svg{display:block;width:100%;height:100%}
 .story-copy{padding:5px 8px 6px;flex:1}
 .locator{font-size:12px;line-height:1.25;font-weight:800;color:#922538;margin:0 0 3px;white-space:nowrap}
 .locator b{color:white;background:var(--red);display:inline-block;min-width:18px;text-align:center;margin-right:5px;padding:1px 2px}
-h2{font:700 28px/1.14 Georgia,serif;margin:0 0 5px}
-.summary{font-size:15.5px;line-height:1.25;margin:0;color:#1f2c3c}
-.medium .art{height:76px}
-.medium h2{font:700 25px/1.14 Georgia,serif;margin-bottom:5px}
-.bottom{display:grid;grid-template-columns:43% 57%;border-top:2px solid var(--navy);padding:7px 0}
+h2{font:700 27px/1.12 Georgia,serif;margin:0 0 4px}
+.summary{font-size:14px;line-height:1.25;margin:0;color:#1f2c3c}
+.medium .art{height:46px}
+.medium .story-copy{padding-top:3px;padding-bottom:4px}
+.medium h2{font:700 20px/1.14 Georgia,serif;margin-bottom:3px}
+.medium .summary{font-size:12.5px}
+.bottom{display:grid;grid-template-columns:34% 66%;border-top:2px solid var(--navy);padding:7px 0}
 .map-panel{padding-right:14px;border-right:1px solid var(--rule);display:flex;flex-direction:column}
 h3{font-size:18px;line-height:1.25;margin:0 0 7px;font-weight:800;color:var(--navy)}
-.map{height:210px;background:#dceaf0}
+.map{height:194px;background:#dceaf0;display:grid;align-items:center}
 .map svg{width:100%;height:100%;display:block}
 .map-note{margin:7px 0 0;font-size:14px;line-height:1.3;color:#344154}
 .map-note strong{color:#9f2032}
 .brief-panel{padding-left:14px;min-width:0}
-.briefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-flow:column;grid-template-rows:repeat(6,minmax(min-content,1fr));column-gap:14px;height:235px}
-.brief{font-size:15px;line-height:1.25;min-width:0;margin:0;border-bottom:1px solid var(--rule)}
-.brief:nth-child(6n){border-bottom:0}
+.briefs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.brief-column{display:grid;grid-auto-rows:max-content;row-gap:1px;min-width:0}
+.brief{font-size:13px;line-height:1.25;min-width:0;margin:0;border-bottom:1px solid var(--rule)}
+.brief:last-child{border-bottom:0}
 .brief b{font-weight:800}
 .map-dot{display:inline-block;width:8px;height:8px;margin:0 4px 1px 9px;border-radius:50%;background:#334e66}
 .date-check{background:#f9e5e6;color:#60202b;padding:4px 9px;font-size:14px;line-height:1.25;display:flex;align-items:center;gap:12px}
@@ -72,12 +75,13 @@ h3{font-size:18px;line-height:1.25;margin:0 0 7px;font-weight:800;color:var(--na
   <div class="numbers"><div class="numbers-title">THE DAY IN NUMBERS:</div><!-- FIGURES --></div>
   <section class="stories leads" aria-label="Three lead stories"><!-- LEADS --></section>
   <section class="stories medium" aria-label="Four major stories"><!-- SECOND --></section>
+  <section class="stories medium" aria-label="Four further stories"><!-- THIRD --></section>
   <section class="bottom">
     <div class="map-panel"><h3>WHERE IT HAPPENED</h3><div class="map"><!-- MAP --></div><p class="map-note"><!-- MAP_KEY --></p></div>
-    <div class="brief-panel"><h3>ALSO ON THURSDAY <small>· REUTERS</small></h3><div class="briefs"><!-- BRIEFS --></div></div>
+    <div class="brief-panel"><h3>ALSO ON THURSDAY</h3><div class="briefs"><!-- BRIEFS --></div></div>
   </section>
   <aside class="date-check"><strong>DATE CHECK</strong><span>Excluded 18 Nov: Voyager 1 light-day, EU €45bn Ukraine loan proposal, Fed minutes and House Democrats’ Jeffries vote.</span></aside>
-  <p class="footer">Sources: Reuters · NASA. Every story happened, or was first reported, on Thursday 19 November 2026.</p>
+  <p class="footer">Sources: <!-- SOURCES -->. Every story happened, or was first reported, on Thursday 19 November 2026.</p>
 </main>
 </body>
 </html>
