@@ -1,0 +1,5 @@
+.makefun-kit/
+node_modules/
+out/
+transcripts*.tar.gz
+.env
