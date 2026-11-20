@@ -1,5 +1,41 @@
 # Review checkpoint · 19 November 2026
 
+## Illustration and editorial rebuild
+
+The current master is 3600 × 2680 and 2,061,274 bytes. The 1024 × 762 runtime image is 657,701 bytes, with SHA-256 `0bfa820dad4e683edbe29970d74c8e48b9072565defba1b68f986dfd5f90e9b9`. All 14 features, 19 briefs, and 33 distinct source records remain present. This revision has not been submitted.
+
+The new `editorial-art.mjs` composes all fourteen images for their card proportions. Each SVG preserves its aspect ratio. Shared material and sky gradients, architectural detail, human poses, paper documents, and geographic context replace the stretched strip drawings. The lead scenes depict the Shenzhen table and named presidents, the Peace Palace with the 9–6 verdict and scales, and a COP31 negotiating document with a solid red CUT stamp. The remaining scenes cover Nasdaq, Vice City, the offshore cyclone forecast, Busan exports, Riyadh debris, the Kerch rail bridge, the Arctic agreement, Australian labour data, the AIU ban, the Johannesburg Test, and Landsat imagery of the Atacama.
+
+The dark navy masthead restores a strong date frame and explicit day-only promise. The seven figures use a 46 px display scale and include forecast landfall wind speeds, October Australian unemployment, and NASA's approximate million-fold search-method speed-up, alongside the summit, verdict, IPO and game-launch estimates. The IMD bulletin, ABS release and NASA report were rechecked directly. The first three cards now use 148 px scenes and a dark editorial copy panel; their headlines use 37 px type. The brief text is 13.5 px with 1.38 leading and a consistent source column.
+
+Final checks: zero detected geometry problems across 208 HTML text runs; 14 aspect-preserving illustrations; zero duplicate SVG IDs; all badge heights 18 px. HTML contrast was checked on 201 text nodes, with a minimum ratio of 4.72:1 and no failures. The high-resolution PNG fully decodes, every runtime PNG chunk CRC passes, and two local Node runs plus two fresh offline Linux Node 22 containers produce identical bytes. Anti-slop reports PASS, severity 0, zero gating issues, 39 editorial advisories and zero external stylesheets.
+
+The Wednesday reference was inspected directly from `G:\bounties\news-image-20261118\entry.png`. Four focused comparisons addressed the illustration rebuild, stronger lead hierarchy, map and brief integration, and the final dark lead panels. Groq returned 52/100 on those comparisons; Mistral rose from 68/100 on the first to 88/100 on the final; Gemini gave an intermediate comparison 58/100. Feedback on hierarchy and small-type reading remained mixed, and some remarks misdescribed visible details. These local reviews do not establish that this edition beats Wednesday or predict an official jury score. The November 19 public top three were also fetched outside the repository; the leader was `@hazel-harbor-63` at 99.2344% provisional win rate during the check.
+
+The earlier landscape image is preserved under ignored `.makefun-kit/pre-upgrade-master.png`. The following sections record earlier versions.
+
+## Polished landscape edition
+
+The structure and coverage remain unchanged: 14 featured stories, 19 briefs, seven numerical callouts, and all 33 source records. The three lead summaries now contain 11, 12, and 9 words, down from 14, 15, and 12: a 21.95% reduction overall. The lead headlines use 35 px type. Card badges have a measured uniform height of 18 px with 11 px type, and the sports/science headlines use 25 px. Card gutters grew from 10 to 12 px. The three brief columns align their sources exactly, while retaining the full source attributions.
+
+Map badges grew from radius 11 to 15, with white 17 px numerals and a 2.6-unit white outline. Their connecting lines are shorter and finer; the underlying geographical anchors are unchanged. The date-check and source rows occupy 46 px together, down from 54 px, using a quieter grey background. The original landscape image is preserved under ignored `.makefun-kit/pre-polish-master.png` for comparison.
+
+The earlier polished 3600 × 2480 master was 1,223,311 bytes. Its 1024 × 705 runtime version was 559,015 bytes, with SHA-256 `5f835963853f0c7fbb157eb030534d7533e8e8e3ba29dcfbb9f1a47c343f880d`. The Chromium audit checked 213 text runs and reported zero geometry problems. Separate browser checks confirmed all 14 badge heights were identical and the source-column alignment deviation was zero. PNG completeness, CRCs, two local executions, and two fresh offline Linux Node 22 executions passed. Anti-slop reported PASS, severity 0, zero gating issues, and 39 editorial advisories with no external stylesheets.
+
+Three focused passes addressed copy and hierarchy; brief alignment and map readability; and map connectors and brief leading. Local visual comparisons used the preserved pre-polish image. Mistral scored the polish 88/100; Groq scored the later comparisons 52/100, and Gemini gave an intermediate comparison a neutral 50/100. These reviews praised clearer copy and alignment but did not establish a 92/100 result. No new submission was made.
+
+## Landscape edition before polish
+
+The earlier landscape master was 3600 × 2480 (1,212,777 bytes). Its matching runtime image was 1024 × 705 and 574,917 bytes, with SHA-256 `c5a9d148d8d5b589ff1c433167832f6c5f2a19d29e2dab1a1343a63efa699cdc`. The canvas contained 14 illustrated features, 19 numbered briefs, seven figures, and seven regional counts. The first three cards covered the Shenzhen summit, ICJ ruling, and COP31 draft. All 33 records had distinct source URLs and were included exactly once in reading order.
+
+Source verification added the official IMD bulletin based on 1200 UTC November 19, locating Akvan at 16.1°N, 85.2°E and forecasting a November 20 landfall. The official ABS October labour release is dated November 19 and reports a 4.9% seasonally adjusted unemployment rate. AP supports the Jepchirchir doping ban, AFP and Reuters the 109–0 Greenland vote, and NASA the newly published pulsar report. Forecasts, earlier imagery, and the October reporting period are labelled explicitly.
+
+The layout audit checks 209 text runs and reports zero clipping, container overflow, text overlap, or map-label collision. PNG CRCs and complete scanlines pass. Two local Node processes and two fresh offline Linux Node 22 containers reproduce the runtime image. The master fully decodes to 3600 × 2480 RGB pixels. Anti-slop passes with severity 0, zero gating issues, 39 editorial advisories (18 `row-kicker-eyebrow`, 21 `overstuffed-row`), and zero external stylesheets.
+
+The current public leader inspected was `@hazel-harbor-63`, submission `01a1f47b-f598-7486-a05e-a2a03bc361ab`, at 99.2344% provisional win rate. The three public leading images were retained outside the repository. Local comparisons of the landscape drafts returned Groq scores of 94, 58, and 58; the final Mistral comparison returned 88. The first result favoured the new hierarchy, while later reviews still preferred aspects of the reference's illustrations. These inconsistent local scores do not establish an official win-rate improvement. The final version keeps the larger full-width scenes, source labels, compact numerical copy, and checked geometry.
+
+The earlier sections below describe the square editions. This landscape revision has not been submitted.
+
 ## Attribution and illustration polish
 
 The footer is derived from the edition's source ledger. Al Jazeera supports the 9–6 ICJ vote and the Nasdaq trading debut. AP and AFP support the Bangladesh brief. The Riyadh brief follows Reuters reporting published by Al Jazeera. The Anthropic brief distinguishes the $83 offer price from the $111 trading debut, with an $81.3bn gross offering that includes shares sold by existing holders.

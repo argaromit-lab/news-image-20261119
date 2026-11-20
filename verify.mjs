@@ -24,10 +24,11 @@ while(pos<image.length){
   if(type==='IDAT')chunks.push(image.subarray(pos+8,pos+8+length));
   pos=end;if(type==='IEND'){ended=true;break;}
 }
-if(!ended||pos!==image.length||!header||header.readUInt32BE(0)!==1024||header.readUInt32BE(4)!==1024)throw new Error('Incomplete or incorrectly sized image');
+if(!ended||pos!==image.length||!header||header.readUInt32BE(0)!==1024||header.readUInt32BE(4)!==762)throw new Error('Incomplete or incorrectly sized landscape image');
+const width=header.readUInt32BE(0),height=header.readUInt32BE(4);
 const decoded=inflateSync(Buffer.concat(chunks));
 const channels={0:1,2:3,4:2,6:4}[header[9]];
-if(header[8]!==8||!channels||decoded.length!==(1024*channels+1)*1024)throw new Error('Unexpected PNG scanline data');
+if(header[8]!==8||!channels||decoded.length!==(width*channels+1)*height)throw new Error('Unexpected PNG scanline data');
 const runs=[];
 for(let i=1;i<=2;i++){
   const dir=path.join(root,'.makefun-kit',`run-${i}`);
@@ -38,6 +39,6 @@ for(let i=1;i<=2;i++){
   if(!bytes.equals(image))throw new Error('Runtime output differs');
   runs.push(createHash('sha256').update(bytes).digest('hex'));
 }
-const result={valid:true,width:1024,height:1024,bytes:image.length,completePNG:true,crcChecks:true,deterministic:runs[0]===runs[1],sha256:runs[0],runs:2};
+const result={valid:true,width,height,bytes:image.length,completePNG:true,crcChecks:true,deterministic:runs[0]===runs[1],sha256:runs[0],runs:2};
 await fs.writeFile(path.join(root,'.makefun-kit','runtime-audit.json'),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify(result));

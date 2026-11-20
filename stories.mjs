@@ -84,59 +84,87 @@ const ledger = [
   {id:29, region:'AMERICAS', place:'New York', source:'Al Jazeera', date:'2026-11-19',
     url:'https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo', lon:-73.99, lat:40.76,
     note:'ANT began Nasdaq trading on 19 Nov at $111. The $83 IPO price was announced on 18 Nov. The $81.3bn gross offering includes stock sold by existing holders and is distinct from the company valuation.'},
+  {id:30,region:'OCEANIA',place:'AUSTRALIA · LABOUR',source:'ABS',date:'2026-11-19',lon:151.21,lat:-33.87,
+    url:'https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/oct-2026',
+    note:'October labour figures released 19 Nov at 11:30am AEDT. The 4.9% rate is seasonally adjusted, not the trend estimate.'},
+  {id:31,region:'ASIA',place:'ODISHA · CYCLONE',source:'IMD',date:'2026-11-19',lon:85.2,lat:16.1,
+    url:'https://mausam.imd.gov.in/backend/assets/cyclone_pdf/Tropical_cylone_advisory_no__25_based_on_1200_UTC_of_19_11_2026.pdf',
+    note:'Official 1200 UTC Nov 19 bulletin locates severe Cyclone Akvan offshore. The forecast Nov 20 landfall is explicitly not represented as happening today.'},
+  {id:32,region:'AFRICA',place:'KENYA · ATHLETICS',source:'AP',date:'2026-11-19',lon:36.82,lat:-1.29,
+    url:'https://www.aljazeera.com/sports/2026/11/19/kenyas-marathon-champion-peres-jepchirchir-gets-three-year-ban-for-doping',
+    note:'AP report published on Nov 19; the Athletics Integrity Unit announced a three-year ban following an EPO violation.'},
+  {id:33,region:'WORLD',place:'SPACE SCIENCE',source:'NASA',date:'2026-11-19',lon:null,lat:null,
+    url:'https://science.nasa.gov/open-science/fermi-data-pulsar-discovery/',
+    note:'NASA report published Nov 19, 10:33am EST, describes a method for finding pulsars. No terrestrial map location.'},
 ];
 
 const updatedSources = {
   2:{url:'https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south'},
   3:{source:'Al Jazeera',url:'https://www.aljazeera.com/news/2026/11/19/un-top-court-finds-myanmar-killed-10000-rohingya-as-it-rules-on-genocide'},
   12:{source:'AP · AFP',url:'https://www.aljazeera.com/news/2026/11/19/home-of-bangladeshs-former-leader-muhammad-yunus-set-on-fire'},
+  17:{source:'AFP · Reuters',place:'GREENLAND · SECURITY',url:'https://www.aljazeera.com/news/2026/11/19/denmark-parliament-approves-security-deal-with-greenland-and-us',
+    note:'All 109 Danish lawmakers present voted yes on Nov 19, with no votes against or abstentions. Greenland remains within the Kingdom of Denmark.'},
 };
 
 // Lead and feature order, followed by the two reading columns of briefs.
-export const featuredCount = 11;
+export const featuredCount = 14;
 const edition = [
-  [1, 'Trump, Xi & Putin meet in Shenzhen', 'China and Russia say the leaders endorsed a declaration rejecting nuclear war.'],
-  [3, 'ICJ finds Myanmar committed genocide', 'The UN court orders safe returns and compensation for Rohingya.'],
-  [5, 'COP31 draft drops fossil fuel language', 'The revised text omits fossil fuels as negotiators seek a deal in Antalya.'],
-  [2, 'Riyadh fund tower hit', 'Coalition reports Houthi missile intercepts. Debris damages tower.'],
-  [4, 'Crimea bridge rail traffic halts', 'Russia reports the third strike in a week.'],
-  [6, 'GTA VI goes on sale worldwide', 'Sensor Tower estimates 17m+ copies sold.'],
-  [7, 'South Korea hits $1tn in exports', 'The AI chip boom helps lift exports.'],
-  [9, 'Dozens missing off Senegal', 'An NGO says a migrant boat capsized.'],
-  [8, 'ECB tracks growing AI lending', 'Data centres are 1.2–1.3% of corporate exposures.'],
-  [10, 'NASA maps Chile’s desert bloom', 'Landsat images show the Atacama in flower.'],
-  [11, 'South Africa wins first Test', 'It beats Bangladesh by nine wickets.'],
-  [12, 'Bangladesh', 'Hasina supporters set fire to Yunus’s ancestral home.'],
-  [13, 'South Korea', 'Court overturns Han’s jail term.'],
-  [14, 'Taiwan', 'Sources say TSMC tightens China chip curbs.'],
+  [1, 'Trump, Xi & Putin\nhold summit', 'China and Russia say the leaders’ joint declaration rejects nuclear war.'],
+  [3, 'Myanmar committed\ngenocide, court rules', 'Myanmar must allow safe Rohingya returns and pay compensation.'],
+  [5, 'COP31 drops\nfossil fuel language', 'Antalya’s revised negotiating text omits all fossil fuel references.'],
+  [29, 'Anthropic’s $81.3bn\nmarket debut', 'Shares open at $111 on Nasdaq after an IPO priced at $83.'],
+  [6, 'GTA VI ends the\n13-year wait', 'Sensor Tower estimates 17m+ copies sold at launch.'],
+  [31, 'Akvan puts India’s\neast coast on alert', 'IMD forecasts Friday landfall near Gopalpur.'],
+  [7, 'South Korea exports\npass $1 trillion', 'The AI chip boom helps make it fourth worldwide.'],
+  [2, 'Missile debris hits\nRiyadh tower', 'The Saudi-led coalition reports missile intercepts.'],
+  [4, 'Crimea bridge\nrail traffic halted', 'Russia reports a third strike in a week.'],
+  [17, 'Denmark backs\nArctic security pact', 'The US–Greenland deal wins a 109–0 vote.'],
+  [30, 'Australia’s jobless\nrate reaches 4.9%', 'ABS counts 753,700 unemployed in October.'],
+  [32, 'Jepchirchir banned\nfor three years', 'Kenya’s marathon champion admits an EPO violation, the AIU says.'],
+  [11, 'South Africa wins\nby nine wickets', 'Harmer’s 6–51 helps beat Bangladesh in the first Test.'],
+  [10, 'A desert in bloom,\nseen from space', 'NASA’s new report maps Atacama blooms in September–October imagery.'],
+  [12, 'Bangladesh', 'Hasina supporters burn Yunus’s ancestral home.'],
+  [13, 'South Korea', 'Court overturns Han’s 15-year term.'],
+  [14, 'Taiwan', 'Sources: TSMC tightens China AI chip curbs.'],
   [15, 'China', 'Alibaba beats quarterly revenue estimates.'],
-  [16, 'EU Commission', 'The bloc confirms a cyberattack.'],
-  [18, 'Iran', 'Western powers seek nuclear inspections.'],
-  [19, 'Gaza', 'Israel says its tank raid has ended.'],
-  [20, 'Iraq', 'Officials report a militia compromise.'],
-  [21, 'Africa', 'Mo Ibrahim urges domestic funding.'],
-  [22, 'Ethiopia', 'The flag carrier probes a loyalty-program breach.'],
-  [23, 'Brazil', 'Corn ethanol drives feedlot growth.'],
-  [24, 'Venezuela', 'Delegates pitch AI for cleaner oil at COP31.'],
+  [16, 'Brussels', 'EU Commission confirms a cyberattack.'],
+  [18, 'Iran', 'Western powers seek nuclear-site inspections.'],
+  [19, 'Gaza', 'Israel says its tank raid ended.'],
+  [20, 'Iraq', 'Officials report a deal with a pro-Iran militia.'],
+  [9, 'Senegal', 'NGO: Dozens missing after a migrant boat capsizes.'],
+  [8, 'Frankfurt', 'ECB says banks’ data-centre lending grows.'],
+  [21, 'Africa', 'Mo Ibrahim urges domestic funding as aid falls.'],
+  [22, 'Ethiopia', 'Flag carrier probes a loyalty-programme breach.'],
+  [23, 'Brazil', 'Corn ethanol drives a feedlot beef boom.'],
+  [24, 'Venezuela', 'COP31 delegates pitch AI for cleaner oil.'],
   [25, 'Markets', 'Gold rebounds from a 14-month low.'],
-  [26, 'FIFA', 'Diallo and Tashima challenge Infantino.'],
-  [27, 'Korean peninsula', 'Lee calls for renewed talks with the North.'],
-  [28, 'Tennis', 'Ash Barty is elected to the Hall of Fame.'],
-  [29, 'Nasdaq', 'Anthropic opens at $111 after an $81.3bn IPO priced at $83 a share.'],
+  [26, 'FIFA', 'Diallo and Tashima challenge FIFA president Infantino.'],
+  [27, 'Korean peninsula', 'Lee urges renewed talks with the North.'],
+  [28, 'Australia', 'Ash Barty wins Tennis Hall of Fame election.'],
+  [33, 'Space', 'NASA reports a faster way to find pulsars.'],
 ];
 
+const featureMeta={
+  1:['summit','3 PRESIDENTS'],3:['court','9–6 VERDICT'],5:['climate','DRAFT · CUT'],29:['ipo','$83 → $111'],
+  6:['gaming','FIRST DAY'],31:['cyclone','19 NOV · ALERT'],7:['chips','EXPORT RECORD'],2:['tower','REPORTED'],
+  4:['bridge','TRAINS HALTED'],17:['arctic','109–0 VOTE'],30:['jobs','OCTOBER DATA'],32:['athletics','3-YEAR BAN'],
+  11:['cricket','9 WICKETS'],10:['desert','NEW NASA REPORT'],
+};
 export const stories = edition.map(([ledgerId,title,summary], index) => {
   const source = ledger.find(story => story.id === ledgerId);
   if (!source) throw new Error(`Unknown story ${ledgerId}`);
-  return {...source, ...updatedSources[ledgerId], id:index+1, art:ledgerId-1, title, summary};
+  const [art,badge]=featureMeta[ledgerId]??[];
+  return {...source, ...updatedSources[ledgerId], id:index+1, art, badge, title, summary};
 });
 
 export const regions = [
-  ['ASIA','#a42c3a'], ['EUROPE','#2b5b86'], ['MIDDLE EAST','#9b4c17'],
-  ['AMERICAS','#286448'], ['AFRICA','#7f5f18'], ['OCEANIA','#226a75'], ['WORLD','#555d70'],
+  ['ASIA','#ac263f'], ['EUROPE','#315d94'], ['MIDDLE EAST','#98521c'],
+  ['AMERICAS','#12634d'], ['AFRICA','#8b6411'], ['OCEANIA','#176c86'], ['WORLD','#535f72'],
 ].map(([name,color]) => ({name,color,count:stories.filter(s=>s.region===name).length}));
 
 export const figures = [
-  ['17m+ copies','GTA VI estimate'], ['$1 trillion','South Korean exports'], ['1.2–1.3%','ECB · data-centre exposure'],
-  ['9 wickets','South Africa wins'],
+  ['3','presidents at one table','ASIA'],['9–6','World Court genocide vote','ASIA'],
+  ['$81.3bn','Anthropic’s gross IPO','AMERICAS'],['90–100','km/h landfall winds · forecast','ASIA'],
+  ['753.7k','Australians unemployed · Oct','OCEANIA'],['17m+','GTA VI copies · estimate','AMERICAS'],
+  ['≈1m×','faster pulsar searches · NASA','WORLD'],
 ];

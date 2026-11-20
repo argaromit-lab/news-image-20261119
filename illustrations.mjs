@@ -161,7 +161,73 @@ function cricket() {
     circle(196,29,3,'#ac293c')+text(20,27,'SOUTH AFRICA',12,'#285744','font-weight="bold"')+text(238,76,'9 WKT',19,'#173c34','font-weight="bold"'));
 }
 
+function ipo() {
+  let facade='';
+  for(let x=23;x<137;x+=9) for(let y=15;y<83;y+=9) facade+=rect(x,y,5,5,(x+y)%3?'#51728c':'#a6c7d7');
+  return svg('Nasdaq',rect(0,0,320,100,'#152b46')+rect(16,7,130,88,'#293f5c')+facade+
+    rect(151,13,156,71,'#0a2037','stroke="#648d9d" stroke-width="1"')+
+    text(163,30,'NASDAQ  ·  ANT',12,'#d4e4ee','font-weight="bold"')+
+    text(163,59,'$111',29,'#a4e4c1','font-weight="bold"')+text(163,75,'TRADING DEBUT',9,'#e5f0f5')+
+    rect(232,41,63,32,'#304c64')+text(263,55,'$83',15,'#fff','text-anchor="middle" font-weight="bold"')+
+    text(263,67,'IPO PRICE',8,'#d9e5eb','text-anchor="middle"')+
+    rect(0,86,320,14,'#20364c')+text(23,97,'19 NOV 2026     $81.3bn GROSS OFFERING',10,'#f6ddb0','font-weight="bold"'));
+}
+
+function cyclone() {
+  let rain='';
+  for(let i=0;i<25;i++) {const x=14+i*43%300,y=19+i*13%66;rain+=line(x,y,x-3,y+8,'#92c9db',.8);}
+  const swirl='<g transform="translate(216 53)">'+[0,90,180,270].map(a=>
+    `<g transform="rotate(${a})">${path('M-2-6C14-28 36-19 31 2C23-9 10-9 4-1Z','#e5f3f7')}</g>`).join('')+circle(0,0,4,'#214f71')+'</g>';
+  return svg('Akvan',rect(0,0,320,100,'#235a79')+rain+
+    path('M0 0H145L134 19L147 33L127 52L119 78L88 100H0Z','#c7d3b6','stroke="#91a798" stroke-width="1"')+
+    path('M113 90Q152 52 190 52','none','stroke="#ffd487" stroke-width="2" stroke-dasharray="4 3"')+
+    path('M131 63L121 69L127 57Z','#ffd487')+swirl+
+    text(15,28,'ODISHA',12,'#244b52','font-weight="bold"')+text(15,47,'INDIA',11,'#244b52')+
+    text(167,24,'AKVAN',15,'#fff','font-weight="bold"')+text(170,91,'20 NOV · FORECAST',10,'#fff','font-weight="bold"'));
+}
+
+function arctic() {
+  return svg('Greenland',rect(0,0,320,100,'#183e5a')+
+    path('M90 12L116 6L147 18L156 41L140 54L130 76L112 88L105 66L90 49L78 29Z','#dceaf0','stroke="#9fb7c8" stroke-width="1"')+
+    path('M0 77L43 61L70 74L90 96H0ZM169 87L198 61L226 71L240 100H167Z','#7b9fae')+
+    rect(184,16,107,34,'#f5f8f6')+text(237,42,'109–0',25,'#143449','text-anchor="middle" font-weight="bold"')+
+    text(181,66,'SECURITY PACT',12,'#fff','font-weight="bold"')+
+    rect(187,76,27,16,'#aa243c')+rect(194,76,4,16,'#fff')+rect(187,82,27,4,'#fff')+
+    rect(225,76,27,16,'#fff')+path('M225 84A8 8 0 0 1 241 84Z','#c63445')+
+    rect(263,76,27,16,'#fff')+[0,1,2,3,4].map(i=>rect(263,76+i*3.2,27,1.6,'#b52a40')).join('')+
+    rect(263,76,11,8,'#30466f'));
+}
+
+function jobs() {
+  let offices='';
+  for(const [x,h] of [[15,37],[42,58],[70,44],[98,66],[127,34]]) {
+    offices+=rect(x,91-h,21,h,'#6e8c9d');
+    for(let y=97-h;y<88;y+=8)offices+=line(x+4,y,x+17,y,'#d3e4e7',2);
+  }
+  return svg('AustraliaJobs',rect(0,76,320,24,'#82b5c2')+offices+
+    path('M88 88Q113 61 153 85L138 87Q134 55 160 60Q150 72 158 87Z','#f4f1de')+
+    rect(174,15,130,69,'#eef3f4','stroke="#a4b7be" stroke-width="1"')+
+    text(239,43,'4.9%',29,'#1a5f7b','text-anchor="middle" font-weight="bold"')+
+    text(239,61,'UNEMPLOYMENT',10,'#2a4f62','text-anchor="middle" font-weight="bold"')+
+    text(239,75,'OCTOBER 2026 · ABS',9,'#2a4f62','text-anchor="middle"'));
+}
+
+function athletics() {
+  let track='';for(let y=70;y<100;y+=8)track+=path(`M0 ${y}Q160 ${y-13} 320 ${y}`,'none','stroke="#efc6ad" stroke-width="1"');
+  return svg('Jepchirchir',rect(0,0,320,100,'#dbece5')+rect(0,66,320,34,'#a96155')+track+
+    circle(126,24,7,'#654a3c')+path('M118 32L132 31L140 51L125 57L112 43Z','#a4263b')+
+    path('M127 53L140 52L154 67L170 68L171 73L149 73L132 61Z','#263e38')+
+    path('M121 53L132 57L122 74L103 85L100 81L114 67Z','#263e38')+
+    path('M119 35L111 46L96 43L95 48L114 52L126 42Z','#654a3c')+
+    path('M132 35L143 34L154 22L158 26L145 42L137 44Z','#654a3c')+
+    text(17,28,'KENYA',13,'#274c3d','font-weight="bold"')+
+    rect(185,22,111,46,'#fff9f5','stroke="#a4273d" stroke-width="2"')+
+    text(240,42,'3 YEARS',19,'#a4273d','text-anchor="middle" font-weight="bold"')+
+    text(240,59,'DOPING BAN',11,'#a4273d','text-anchor="middle" font-weight="bold"'));
+}
+
 export const illustrations = [summit,tower,court,bridge,climate,gaming,chips,bank,boat,desert,cricket];
+export const featureScenes={summit,tower,court,bridge,climate,gaming,chips,bank,boat,desert,cricket,ipo,cyclone,arctic,jobs,athletics};
 
 // Coastline silhouettes independently drawn in geographic coordinates.
 const land = [
@@ -177,23 +243,23 @@ const land = [
 ];
 
 export function worldMap(stories, featuredCount) {
-  const project=(lon,lat)=>[13+(lon+180)/360*334,14+(82-lat)/140*138];
-  const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d8c7a2','stroke="#9eacaa" stroke-width=".55"')).join('');
-  let grid='';for(let lat=-40;lat<=60;lat+=20){const [,y]=project(0,lat);grid+=line(8,y,352,y,'#cadce1',.55);}
-  // Label positions are deliberately spread; connecting lines retain geography.
-  const labels={SHENZHEN:[298,65],MYANMAR:[283,91],RIYADH:[235,88],GLOBAL:[95,83],ANTALYA:[213,72],CRIMEA:[231,36],CHILE:[99,130],SEOUL:[302,43],SENEGAL:[151,82],FRANKFURT:[179,49],JOHANNESBURG:[222,133]};
+  const project=(lon,lat)=>[8+(lon+180)/360*584,17+(82-lat)/140*195];
+  const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d5dfd5','stroke="#9fb2b5" stroke-width=".75"')).join('');
+  let grid='';for(let lat=-40;lat<=60;lat+=20){const [,y]=project(0,lat);grid+=line(8,y,592,y,'#d4e2e9',.7);}
+  const labels={summit:[507,104.6],court:[474,125],climate:[346,88.4],ipo:[153,78.2],gaming:[150,110.5],cyclone:[433,132.6],chips:[529,71.4],tower:[394,106.3],bridge:[378,56.1],arctic:[236,28.1],jobs:[552,200.6],athletics:[361,154.7],cricket:[331,190.4],desert:[166,183.6]};
+  const colors={ASIA:'#ac263f',EUROPE:'#315d94','MIDDLE EAST':'#98521c',AMERICAS:'#12634d',AFRICA:'#8b6411',OCEANIA:'#176c86',WORLD:'#535f72'};
   const leadPins=stories.slice(0,featuredCount).map(story=>{
     const [x,y]=project(story.lon,story.lat);
-    const [lx,ly]=labels[story.place.split(' · ')[0]];
-    const color='#a42238';
-    return line(x,y,lx,ly,'#fff',2.6)+line(x,y,lx,ly,color,1.2)+circle(x,y,2.5,color,'stroke="#fff" stroke-width=".8"')+
-      circle(lx,ly,9,color,'stroke="#fff" stroke-width="1.25"')+
-      text(lx,ly+3.8,String(story.id),11,'#fff','text-anchor="middle" font-weight="bold"');
+    const [lx,ly]=labels[story.art];
+    const color=colors[story.region];
+    return line(x,y,lx,ly,'#fff',2.6)+line(x,y,lx,ly,color,.8)+circle(x,y,3,color,'stroke="#fff" stroke-width="1"')+
+      circle(lx,ly,15,color,'stroke="#fff" stroke-width="2.6"')+
+      text(lx,ly+5.8,String(story.id),17,'#fff','text-anchor="middle" font-weight="bold"');
   }).join('');
   const mappedBriefs=stories.slice(featuredCount).filter(story=>story.lon!==null);
   const dots=mappedBriefs.map(story=>{
     const [x,y]=project(story.lon,story.lat);
-    return circle(x,y,3,'#334e66','stroke="#fff" stroke-width=".85"');
+    return circle(x,y,3.2,colors[story.region],'stroke="#fff" stroke-width=".9"');
   }).join('');
-  return `<svg role="img" viewBox="0 0 360 164" xmlns="http://www.w3.org/2000/svg" aria-label="World map with ${featuredCount} numbered feature pins and ${mappedBriefs.length} brief locations">${grid}${coast}${text(25,39,'N. AMERICA',8,'#324f61')}${text(92,109,'S. AMERICA',8,'#324f61')}${text(166,22,'EUROPE',8,'#324f61')}${text(174,101,'AFRICA',8,'#324f61')}${text(272,24,'ASIA',8,'#324f61')}${text(293,148,'OCEANIA',8,'#324f61')}${dots}${leadPins}</svg>`;
+  return `<svg role="img" viewBox="0 0 600 236" xmlns="http://www.w3.org/2000/svg" aria-label="World map with ${featuredCount} numbered feature pins and ${mappedBriefs.length} brief locations">${grid}${coast}${text(46,53,'NORTH AMERICA',10,'#506573')}${text(137,162,'S. AMERICA',10,'#506573')}${text(284,30,'EUROPE',10,'#506573')}${text(287,148,'AFRICA',10,'#506573')}${text(456,43,'ASIA',10,'#506573')}${text(496,225,'OCEANIA',10,'#506573')}${dots}${leadPins}</svg>`;
 }
