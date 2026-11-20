@@ -253,8 +253,8 @@ export function worldMap(stories, featuredCount) {
     const [lx,ly]=labels[story.art];
     const color=colors[story.region];
     return line(x,y,lx,ly,'#fff',2.6)+line(x,y,lx,ly,color,.8)+circle(x,y,3,color,'stroke="#fff" stroke-width="1"')+
-      circle(lx,ly,15,color,'stroke="#fff" stroke-width="2.6"')+
-      text(lx,ly+5.8,String(story.id),17,'#fff','text-anchor="middle" font-weight="bold"');
+      circle(lx,ly,17,color,'stroke="#fff" stroke-width="2.6"')+
+      text(lx,ly+6.4,String(story.id),19,'#fff','text-anchor="middle" font-weight="bold"');
   }).join('');
   const mappedBriefs=stories.slice(featuredCount).filter(story=>story.lon!==null);
   const dots=mappedBriefs.map(story=>{

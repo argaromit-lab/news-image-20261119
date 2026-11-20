@@ -11,13 +11,13 @@ const type=(x,y,words,size=15,fill=ink,extra='')=>`<text x="${x}" y="${y}" font-
 const bold=(x,y,words,size=18,fill=ink,extra='')=>type(x,y,words,size,fill,`font-weight="700" ${extra}`);
 const panel=(x,y,w,h,fill='#f9f8f0')=>box(x+3,y+4,w,h,'#263f51','opacity=".12"')+box(x,y,w,h,fill,'stroke="#8197a0" stroke-width="1"');
 const floorGrain=(w,y)=>Array.from({length:18},(_,i)=>rule(12+i*47,y+i%3*4,30+i*47,y+i%3*4,'#adc2bd',.6,'opacity=".28"')).join('');
-const hero=(id,content)=>scene(id,800,430,box(0,0,800,430,`url(#${id}-sky)`)+content,'#173647');
+const hero=(id,content)=>scene(id,800,360,box(0,0,800,360,`url(#${id}-sky)`)+`<g transform="translate(40 -12) scale(.9)">${content}</g>`,'#173647');
 const imageLabels={
-  IPO:{main:'IPO $83 · $81.3BN',size:52,bg:'#15354d',fg:'#ffe2a0'},
+  IPO:{main:'IPO $83 · $81.3BN',size:58,bg:'#15354d',fg:'#ffe2a0'},
   Gaming:{main:'GTA VI',size:60,bg:'#263c58',fg:'#fff3d5'},
-  Cyclone:{main:'AKVAN · 90–100 KM/H',size:48,bg:'#183f57',fg:'#fff7e8'},
+  Cyclone:{main:'AKVAN · 90–100 KM/H',size:56,bg:'#183f57',fg:'#fff7e8'},
   Exports:{main:'$1 TRILLION',size:68,bg:'#194c48',fg:'#fff5da'},
-  Riyadh:{main:'0 INJURIES REPORTED',size:50,bg:'#27564d',fg:'#fff5e1'},
+  Riyadh:{main:'0 INJURIES REPORTED',size:56,bg:'#27564d',fg:'#fff5e1'},
   Kerch:{main:'RAIL HALTED',size:60,bg:'#a5263c',fg:'#fff8e7'},
   Arctic:{main:'109–0',size:68,bg:'#1f4864',fg:'#fff7e6'},
   Jobs:{main:'4.9%',size:68,bg:'#1b5a75',fg:'#fff6df'},
@@ -31,12 +31,11 @@ function imageLabel(id,w,y){
   return box(0,y,w,65,d.bg)+bold(w/2,y+50,d.main,d.size,d.fg,'text-anchor="middle"');
 }
 function scene(id,w,h,content,bg='#dfeaf0'){
-  const finish=`<linearGradient id="${id}-finish" x2=".18" y2="1"><stop stop-color="#fff0cd" stop-opacity=".12"/><stop offset=".5" stop-color="#cde4df" stop-opacity="0"/><stop offset="1" stop-color="#142d42" stop-opacity=".19"/></linearGradient>`;
-  const compact=Boolean(imageLabels[id]),coreHeight=compact?115:h,totalHeight=compact?180:h;
+  const compact=Boolean(imageLabels[id]),coreHeight=compact?(w>1000?115:140):h,totalHeight=compact?coreHeight+65:h;
   const ground={IPO:[124,'#718b91'],Gaming:[120,'#4b6374'],Cyclone:[140,'#346b83'],Exports:[112,'#37677d'],Riyadh:[129,'#819b98'],Kerch:[96,'#37677d'],Arctic:[96,'#7198ac'],Jobs:[112,'#37677d'],Athletics:[88,'#a76255'],Cricket:[82,'#7e9e74'],Atacama:[107,'#8d6c7e']}[id];
   const scale=coreHeight/h;
   const art=compact?box(0,0,w,coreHeight,content.includes(`url(#${id}-sky)`)?`url(#${id}-sky)`:bg)+box(0,ground[0]*scale,w,coreHeight-ground[0]*scale,ground[1])+`<g transform="translate(${(w-w*scale)/2} 0) scale(${scale})">${content}</g>`:content;
-  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${totalHeight}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs>${finish}<linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,totalHeight,bg)}${art}${box(0,0,w,coreHeight,`url(#${id}-finish)`)}${imageLabel(id,w,coreHeight)}</svg>`;
+  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${totalHeight}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,totalHeight,bg)}${art}${imageLabel(id,w,coreHeight)}</svg>`;
 }
 function flag(x,y,country,scale=1){
   let cloth='';

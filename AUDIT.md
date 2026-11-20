@@ -1,5 +1,47 @@
 # Review checkpoint · 19 November 2026
 
+## November 18 reference study and local revision · 20 November 2026
+
+The requested public `news-image-20261118` top three were fetched twice, with unchanged rank order and rates, into `G:\kits\news-image-20261119-samples\`. Files `nov18-top1.png` through `nov18-top3.png`, `nov18-leaderboard.json`, `nov18-verdict-summary.json`, `nov18-comparison-native.png` and `nov18-comparison-300.png` all remain outside this repository. The sheets compare the exact image from **c691ae9**, the new candidate, and the three references. Native samples retain their original pixels; each thumbnail is exactly 300 px wide. No rival account names, code or artwork were inserted into the entry.
+
+| Public reference | Development rate | 90% interval | Image | Recorded margins, 24 calls |
+| --- | --- | --- | --- | --- |
+| #1 | 99.2304% | 99.0261–99.4347% | 1024 × 1024 | 12 × 5, 10 × 4, 2 × 3 |
+| #2 | 99.1676% | 98.9469–99.3884% | 1024 × 1024 | 8 × 5, 12 × 4, 4 × 3 |
+| #3 | 99.1513% | 98.9298–99.3728% | 1024 × 1024 | 9 × 5, 8 × 4, 7 × 3 |
+
+All 24 calls per reference were wins against house images: 8 anchor calls and 16 rung calls. These are not direct #1-versus-#2/#3 verdicts. The #1 rate leads #2 by 0.0628 percentage points and #3 by 0.0791; their intervals overlap. Recorded reasons repeatedly prioritize an explicit date, geographically broad selection and faithful date exclusions, then praise coherent composition. Some even prefer a house image's thumbnail craft while awarding the reference the win for breadth. Thus neither these rates nor margins isolate typography, stamp size or layout as the causal advantage. The API still returns the Development board; this is not a claim about final placements.
+
+Direct visual inspection finds all canvases square, so aspect ratio does not explain the ranking. Reference #1 has substantial supporting image areas, a quiet two-column lower list and a visibly separated date-check box. Reference #2 makes individual image labels especially large yet ranks lower, so maximum stamp size alone does not explain #1. Exact reference font sizes cannot be recovered from raster images. Our revision adopts the observable layout patterns using our own existing artwork and preserves **stories.mjs and SOURCES.md byte-for-byte against c691ae9**, all 33 reports, 7 regions, 14 features, 19 briefs, source qualifiers and DATE CHECK exclusions.
+
+Compared with c691ae9, the authored date rises from 60 to **92 px**, supporting headlines 26 to **30 px**, final-row headlines 26 to **28 px**, and briefs 17 to **20 px**. The bottom list moves from three narrow columns to two wider columns with trailing source credits. Its final distribution is 9 and 10 records; 15 briefs occupy one line and four occupy two. At 300 px the date is **15.33 px**, lead headlines **6.67 px**, supporting headlines **5 px**, and briefs **3.33 px**; complete brief prose is still a full-size reading layer. The source canvas remains 1800 square, captured at 2048 and downsampled to 1024.
+
+Supporting SVG compositions grow from a 115-unit scene plus 65-unit label to **140 + 65 units**, with a 104 px slot instead of the baseline's 120 px letterboxed slot. Their effective displayed scene height grows from approximately 88–91 to 104 authored px. The 84 px slot mentioned in the earlier progress update belonged to e768cbb, not c691ae9. Selected image labels increase in size; map badges grow from radius 15 to **17**, numerals 17 to **19**, and DATE CHECK body type 12 to **15 px**. The seven-region strip is continuous and labelled. A translucent decorative finish was removed to sharpen flat colours and stay below 900 KB. Anti-slop's deterministic fixer removed the filled date box's redundant border; its larger text and separate background retain the date-check hierarchy.
+
+The final master is **2048 × 2048**, **1,001,903 bytes**. The entry is **1024 × 1024**, **893,068 bytes**, SHA-256 `45840cd6f42130f2233b2686d92bdf626162b3b2e3f7be7808e968375537a704`. Browser checks report **251 HTML text runs, zero overflow/overlap**, all SVG label checks passing, 14 dated cards, 33 source credits and the unchanged 3 + 4 + 4 + 3 sequence. Two independent Chromium contexts reproduce both master and entry. PNG completeness/CRCs and two local processes pass. **Two fresh offline Linux Node 22 containers**, each read-only with **1 CPU, 512 MB and 64 processes**, reproduce that entry hash exactly.
+
+Anti-slop verdict: **PASS**, severity **0**, gating **0**, advisories **57**, external stylesheets **0** after its automatic fix.
+
+| Guard | Hits | Action | Why it matters |
+| --- | --- | --- | --- |
+| `redundant-border` | 1 → 0 | Applied the detector's removal of the date-check border | The separate background already defines the box |
+| `row-kicker-eyebrow` | 18 | Retained as editorial metadata advisories | Location and source labels identify the reports |
+| `overstuffed-row` | 39 | Retained as density advisories; checked at native and 300 px | Detailed prose remains a full-size reading layer |
+
+Three visual review checkpoints were completed, including an initial composition, larger supporting headlines, then larger map labels and date-check copy with rebalanced briefs. The final local comparison before the border-only automatic cleanup scored **52/100 Groq** and **68/100 Mistral** against reference #1; both report UPGRADE_REQUIRED. Some criticism invents factual geography (COP31 in Antarctica) or overlooks existing elements, so these are limited design opinions, not source verification or official grading. Measured readability improvements are established; a decisive jury win is not. The final artifact is held for the requested local review, without push or submission.
+
+## Resumed verification · 20 November 2026, 12:34 UTC
+
+The recovered candidate is commit `e768cbb`, one local commit ahead of `origin/main`. A fresh public leaderboard check still places our submitted `c691ae9` image, **Mindful Flux**, submission `01a1f876-324c-75be-aded-c6dd61de386c`, at development rank **3**, **99.2254%**, against the leader's **99.2344%**. Their intervals overlap. The candidate itself remains unsubmitted and has no official score.
+
+Rebuilding the candidate reproduces the committed **2048 × 2048** master and **1024 × 1024**, **887,714-byte** entry exactly. Two browser contexts agree; all **252 text runs**, **33 stories**, **14 features** and **19 briefs** pass the geometry and ledger checks. PNG checksums, complete scanlines and two fresh local runtime executions pass. An additional offline, read-only Linux Node 22 container with **1 CPU, 512 MB and 64 processes** produces SHA-256 `3ec6430f43b03b37538866076b67832b48eae93860c11c99ef4242a6b76a7906`.
+
+Anti-slop verdict: **PASS**, severity **0**, gating **0**, advisory **57**, external stylesheets **0**. `row-kicker-eyebrow` accounts for 18 advisories and `overstuffed-row` for 39. These flag the deliberate dense editorial cards and their source/location labels; no gating rewrite is required.
+
+Fresh comparisons against the retained public #1 image return **58/100** from Groq (`qwen/qwen3.8-27b`) and **88/100** from Mistral (`ministral-14b-2512`, after the preferred model returned HTTP 429). Both report `UPGRADE_REQUIRED`. Groq alleges a cropped date; direct inspection shows the complete date inside the masthead, and browser geometry reports no clipping. The critiques still identify dense supporting copy and weak thumbnail readability. They do not establish a decisive improvement over #1. Earlier optimization passes remain documented below.
+
+The official kit preflight on `e768cbb` using the existing `square-transcripts.tar.gz` passes **13 checks, 0 failures**, with 6 skips and 5 checks deferred to submission. That older bundle reports **72.6% authored** and **14.6% unwritten** lines against this candidate; it is a diagnostic checkpoint, not a replacement for bundling every session before submission. Logs for this continuation are ignored under `.makefun-kit/`: `last-run.log`, `linux-resumed.log`, `anti-slop-resumed.json`, `vision-resumed.log`, `vision-resumed-second.log` and `preflight-resumed.log`. No new submission or push was performed in this continuation. The deadline is **21 November 2026, 00:00 UTC**.
+
 ## Local readability candidate compared with c691ae9
 
 This is a layout-only continuation of `c691ae9`. `stories.mjs` and `SOURCES.md` are byte-for-byte unchanged from that commit: all 33 reports, all 14 features, all 19 briefs, the seven-region accounting, source/date labels and DATE CHECK content remain intact. The source render is **2048 × 2048**, 1,195,826 bytes; the runtime PNG is **1024 × 1024**, **887,714 bytes**. Entry SHA-256: `3ec6430f43b03b37538866076b67832b48eae93860c11c99ef4242a6b76a7906`.

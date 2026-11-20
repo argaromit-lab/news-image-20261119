@@ -44,10 +44,10 @@ const brief=s=>{
   const last=words.slice(split+1);
   return `<p class="brief" data-story="${s.id}" style="--region:${color(s.region)}"><span class="id">${s.id}</span><span class="brief-copy"><b>${escape(s.title)}.</b> ${first} <span class="brief-ending">${last} <span class="source">${escape(shortSource(s.source))}</span></span></span></p>`;
 };
-const briefColumns=[stories.slice(14,24),stories.slice(24,33)];
+const briefColumns=[stories.slice(14,23),stories.slice(23,33)];
 const replacements={
   FIGURES:figures.map(([number,label,region])=>`<div class="figure" style="--region:${color(region)}"><strong>${escape(number)}</strong><span>${escape(label)}</span></div>`).join(''),
-  REGIONS:regions.map(r=>`<span class="region" style="--region:${r.color}"><i aria-hidden="true"></i>${escape(r.name)} ${r.count}</span>`).join(''),
+  REGIONS:regions.map(r=>`<span class="region" style="--region:${r.color}">${escape(r.name)} ${r.count}</span>`).join(''),
   LEADS:stories.slice(0,3).map(card).join(''),
   SECOND:stories.slice(3,7).map(card).join(''),
   THIRD:stories.slice(7,11).map(card).join(''),
@@ -123,7 +123,13 @@ try{
       const box=bounds(el),scene=bounds(el.closest('svg'));
       if(box.left<scene.left-.5||box.right>scene.right+.5||box.top<scene.top-.5||box.bottom>scene.bottom+.5)problems.push({type:'svg-label-clipped',text:el.textContent});
     }
-    return{width,height,storyCount:storyIds.length,featuredCount:document.querySelectorAll('.story').length,featureRows:rowCounts,briefCount:document.querySelectorAll('.brief').length,datedFeatures:cardDates.length,sourceCredits:sourceCredits.length,textBlocks:blocks.length,textRuns,problems};
+    const thumbnailScale=300/width;
+    const fontMetrics=selector=>{
+      const el=document.querySelector(selector),css=getComputedStyle(el);
+      return{authoredPx:parseFloat(css.fontSize),entryPx:parseFloat(css.fontSize)*1024/width,preview300Px:parseFloat(css.fontSize)*thumbnailScale};
+    };
+    const thumbnail={width:300,height:300,date:fontMetrics('h1'),leadHeadline:fontMetrics('.leads h2'),supportHeadline:fontMetrics('.medium h2'),brief:fontMetrics('.brief'),dateCheck:fontMetrics('.date-check'),supportArtHeight:bounds(document.querySelector('.medium .art')).height*thumbnailScale,briefColumns:document.querySelectorAll('.brief-column').length,briefLines:[...document.querySelectorAll('.brief')].map(el=>Math.round(el.clientHeight/parseFloat(getComputedStyle(el).lineHeight)))};
+    return{width,height,storyCount:storyIds.length,featuredCount:document.querySelectorAll('.story').length,featureRows:rowCounts,briefCount:document.querySelectorAll('.brief').length,datedFeatures:cardDates.length,sourceCredits:sourceCredits.length,textBlocks:blocks.length,textRuns,thumbnail,problems};
   },canvas);
   await fs.writeFile(path.join(output,'layout-audit.json'),JSON.stringify(audit,null,2)+'\n');
   if(audit.problems.length)throw new Error(JSON.stringify(audit.problems));
