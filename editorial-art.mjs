@@ -11,31 +11,32 @@ const type=(x,y,words,size=15,fill=ink,extra='')=>`<text x="${x}" y="${y}" font-
 const bold=(x,y,words,size=18,fill=ink,extra='')=>type(x,y,words,size,fill,`font-weight="700" ${extra}`);
 const panel=(x,y,w,h,fill='#f9f8f0')=>box(x+3,y+4,w,h,'#263f51','opacity=".12"')+box(x,y,w,h,fill,'stroke="#8197a0" stroke-width="1"');
 const floorGrain=(w,y)=>Array.from({length:18},(_,i)=>rule(12+i*47,y+i%3*4,30+i*47,y+i%3*4,'#adc2bd',.6,'opacity=".28"')).join('');
-const hero=(id,content)=>scene(id,800,245,box(0,0,800,245,`url(#${id}-sky)`)+`<g transform="translate(0 18)">${content}</g>`,'#173647');
+const hero=(id,content)=>scene(id,800,430,box(0,0,800,430,`url(#${id}-sky)`)+content,'#173647');
 const imageLabels={
-  IPO:{main:'IPO $83 · $81.3BN',sub:'OFFER PRICE · GROSS PROCEEDS',size:52,bg:'#15354d',fg:'#ffe2a0'},
-  Gaming:{main:'GTA VI',sub:'13 YEARS · 17M+ COPIES EST.',size:58,bg:'#263c58',fg:'#fff3d5'},
-  Cyclone:{main:'AKVAN · 90–100 KM/H',sub:'20 NOV LANDFALL FORECAST',size:48,bg:'#183f57',fg:'#fff7e8'},
-  Exports:{main:'$1 TRILLION',size:72,bg:'#194c48',fg:'#fff5da'},
-  Riyadh:{main:'INTERCEPTED',sub:'0 INJURIES REPORTED · SAUDI ACCOUNT',size:56,bg:'#27564d',fg:'#fff5e1'},
-  Kerch:{main:'RAIL HALTED',size:66,bg:'#a5263c',fg:'#fff8e7'},
-  Arctic:{main:'109–0',size:82,bg:'#1f4864',fg:'#fff7e6'},
-  Jobs:{main:'4.9%',size:82,bg:'#1b5a75',fg:'#fff6df'},
-  Athletics:{main:'BANNED · 3 YRS',size:54,bg:'#f6efdd',fg:'#a6243b',stamp:true},
-  Cricket:{main:'9 WICKETS',size:78,bg:'#184d43',fg:'#fff4d8'},
-  Atacama:{main:'NASA · ATACAMA BLOOM',sub:'SEP–OCT IMAGERY · REPORT 19 NOV',size:58,bg:'#244659',fg:'#fff5dd'},
+  IPO:{main:'IPO $83 · $81.3BN',size:52,bg:'#15354d',fg:'#ffe2a0'},
+  Gaming:{main:'GTA VI',size:60,bg:'#263c58',fg:'#fff3d5'},
+  Cyclone:{main:'AKVAN · 90–100 KM/H',size:48,bg:'#183f57',fg:'#fff7e8'},
+  Exports:{main:'$1 TRILLION',size:68,bg:'#194c48',fg:'#fff5da'},
+  Riyadh:{main:'0 INJURIES REPORTED',size:50,bg:'#27564d',fg:'#fff5e1'},
+  Kerch:{main:'RAIL HALTED',size:60,bg:'#a5263c',fg:'#fff8e7'},
+  Arctic:{main:'109–0',size:68,bg:'#1f4864',fg:'#fff7e6'},
+  Jobs:{main:'4.9%',size:68,bg:'#1b5a75',fg:'#fff6df'},
+  Athletics:{main:'BANNED · 3 YRS',size:48,bg:'#f6efdd',fg:'#a6243b',stamp:true},
+  Cricket:{main:'9 WICKETS',size:68,bg:'#184d43',fg:'#fff4d8'},
+  Atacama:{main:'NASA · ATACAMA BLOOM',size:56,bg:'#244659',fg:'#fff5dd'},
 };
 function imageLabel(id,w,y){
   const d=imageLabels[id];if(!d)return'';
-  if(d.stamp)return box(0,y,w,95,d.bg)+`<g transform="rotate(-4 ${w/2} ${y+47})">${box(w/2-280,y+14,560,60,d.bg,`stroke="${d.fg}" stroke-width="3.5"`)}${bold(w/2,y+62,d.main,d.size,d.fg,'text-anchor="middle"')}</g>`;
-  return box(0,y,w,95,d.bg)+(d.sub?
-    bold(w/2,y+49,d.main,d.size,d.fg,'text-anchor="middle"')+bold(w/2,y+87,d.sub,22,d.fg,'text-anchor="middle"'):
-    bold(w/2,y+75,d.main,d.size,d.fg,'text-anchor="middle"'));
+  if(d.stamp)return box(0,y,w,65,d.bg)+`<g transform="rotate(-1.8 ${w/2} ${y+32})">${box(w/2-250,y+8,500,46,d.bg,`stroke="${d.fg}" stroke-width="3"`)}${bold(w/2,y+44,d.main,d.size,d.fg,'text-anchor="middle"')}</g>`;
+  return box(0,y,w,65,d.bg)+bold(w/2,y+50,d.main,d.size,d.fg,'text-anchor="middle"');
 }
 function scene(id,w,h,content,bg='#dfeaf0'){
   const finish=`<linearGradient id="${id}-finish" x2=".18" y2="1"><stop stop-color="#fff0cd" stop-opacity=".12"/><stop offset=".5" stop-color="#cde4df" stop-opacity="0"/><stop offset="1" stop-color="#142d42" stop-opacity=".19"/></linearGradient>`;
-  const totalHeight=h+(imageLabels[id]?95:0);
-  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${totalHeight}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs>${finish}<linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,totalHeight,bg)}${content}${box(0,0,w,h,`url(#${id}-finish)`)}${imageLabel(id,w,h)}</svg>`;
+  const compact=Boolean(imageLabels[id]),coreHeight=compact?115:h,totalHeight=compact?180:h;
+  const ground={IPO:[124,'#718b91'],Gaming:[120,'#4b6374'],Cyclone:[140,'#346b83'],Exports:[112,'#37677d'],Riyadh:[129,'#819b98'],Kerch:[96,'#37677d'],Arctic:[96,'#7198ac'],Jobs:[112,'#37677d'],Athletics:[88,'#a76255'],Cricket:[82,'#7e9e74'],Atacama:[107,'#8d6c7e']}[id];
+  const scale=coreHeight/h;
+  const art=compact?box(0,0,w,coreHeight,content.includes(`url(#${id}-sky)`)?`url(#${id}-sky)`:bg)+box(0,ground[0]*scale,w,coreHeight-ground[0]*scale,ground[1])+`<g transform="translate(${(w-w*scale)/2} 0) scale(${scale})">${content}</g>`:content;
+  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${totalHeight}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs>${finish}<linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,totalHeight,bg)}${art}${box(0,0,w,coreHeight,`url(#${id}-finish)`)}${imageLabel(id,w,coreHeight)}</svg>`;
 }
 function flag(x,y,country,scale=1){
   let cloth='';
@@ -62,19 +63,19 @@ function skyline(id,buildings,base=110){
 }
 function president(x,name,hair,tie,kind){
   const top=kind==='trump'?'M-16 5Q-17-13 1-11Q21-14 23 2L12 4L2-2L-10 4L-15 13Z':kind==='xi'?'M-17 9Q-21-13 0-12Q23-13 20 10L14 0Q0-5-12 0L-15 12Z':'M-17 11Q-21-5-9-9L-6-3L-12 2L-13 13ZM12 12L13-2L7-8Q21-5 19 10Z';
-  return `<g transform="translate(${x} 66)">${oval(1,63,45,6,'#163447','opacity=".15"')}${shape('M-37 69L-31 39Q-27 30-11 29H10Q27 31 32 41L38 69Z','#243a51')}${shape('M-12 30L0 52L12 30Z','#fff9ee')}${shape('M-3 36H3L7 62L0 68L-7 62Z',tie)}${shape('M-15 5Q-17 18-12 27Q-7 34 1 34Q11 32 16 22L18 6Z','#d9ac8c','stroke="#b68a73" stroke-width="1"')}${shape('M2 7Q10 13 12 23L6 30Q14 28 17 20L18 6Z','#bd8a70','opacity=".35"')}${shape(top,hair)}${rule(-10,12,-4,12,'#594e4b',1.4)}${rule(6,12,12,12,'#594e4b',1.4)}${shape('M2 14L4 23H0','none','stroke="#a67967" stroke-width="1"')}${rule(-4,27,6,27,'#8d5b55',1.2)}${rule(-26,44,-17,60,'#516779',1.5)}${rule(26,44,18,60,'#102e44',1.5)}${box(-93,58,186,52,'#fffdf1','stroke="#293f50" stroke-width="2"')}${bold(0,99,name,44,'#183447','text-anchor="middle"')}</g>`;
+  return `<g transform="translate(${x} 133) scale(1.75)">${oval(1,63,45,6,'#163447','opacity=".15"')}${shape('M-37 69L-31 39Q-27 30-11 29H10Q27 31 32 41L38 69Z','#243a51')}${shape('M-12 30L0 52L12 30Z','#fff9ee')}${shape('M-3 36H3L7 62L0 68L-7 62Z',tie)}${shape('M-15 5Q-17 18-12 27Q-7 34 1 34Q11 32 16 22L18 6Z','#d9ac8c','stroke="#b68a73" stroke-width="1"')}${shape('M2 7Q10 13 12 23L6 30Q14 28 17 20L18 6Z','#bd8a70','opacity=".35"')}${shape(top,hair)}${rule(-10,12,-4,12,'#594e4b',1.4)}${rule(6,12,12,12,'#594e4b',1.4)}${shape('M2 14L4 23H0','none','stroke="#a67967" stroke-width="1"')}${rule(-4,27,6,27,'#8d5b55',1.2)}${rule(-26,44,-17,60,'#516779',1.5)}${rule(26,44,18,60,'#102e44',1.5)}${box(-62,66,124,38,'#fffdf1','stroke="#293f50" stroke-width="1.4"')}${bold(0,95,name,34,'#183447','text-anchor="middle"')}</g>`;
 }
 function summit(){
-  const city=skyline('summit',[[23,33,53],[70,27,73],[111,41,45],[166,31,88],[213,37,58],[558,35,65],[604,26,84],[644,42,52],[700,28,70],[742,35,44]],113);
-  let windows='';for(const x of [8,267,532,791])windows+=box(x,0,5,116,'#dce5e2')+rule(x+5,0,x+5,116,'#9db3ba',1);
-  const architecture=box(0,0,800,17,'#243e4c')+rule(0,17,800,17,'#e5c992',2)+
-    shape('M0 18H35L66 155H0ZM800 18H765L734 155H800Z','#456573')+
-    [74,281,519,726].map(x=>rule(x,17,x,153,'#7798a0',2)).join('');
-  return hero('Summit',architecture+`<g transform="translate(0 24)">`+city+shape('M0 116Q127 95 236 114Q385 98 509 113Q661 96 800 113V180H0Z','#73968c')+windows+
-    flag(148,18,'US',1.15)+flag(370,18,'CN',1.15)+flag(590,18,'RU',1.15)+
-    shape('M38 147Q399 99 762 147L711 180H89Z','#2c4c59')+shape('M38 147Q399 112 762 147L725 160H75Z','#607e82')+rule(89,165,712,165,'#c0cec1',1)+floorGrain(800,172)+
-    president(177,'TRUMP','#d9bd6e','#ad263b','trump')+president(400,'XI','#243238','#9e2538','xi')+president(623,'PUTIN','#b7a58d','#516c86','putin')+
-    [279,503,726].map(x=>box(x,139,27,9,'#f4ecda')+rule(x,144,x+20,144,'#a5b9b9',1)+rule(x+10,138,x+13,121,'#263f51',1.4)+dot(x+13,120,2,'#233b4b')).join('')+'</g>');
+  const city=skyline('summit',[[20,41,105],[78,34,137],[127,42,97],[186,33,162],[235,42,114],[532,35,134],[584,31,164],[632,43,118],[694,34,141],[747,32,105]],228);
+  const windows=[19,268,530,779].map(x=>box(x,22,5,242,'#c5d5d4')+rule(x+5,22,x+5,264,'#668996',1.5)).join('');
+  return hero('Summit',city+shape('M0 238Q150 195 311 228Q503 189 800 231V430H0Z','#79998d')+
+    box(0,0,800,23,'#24414d')+rule(0,23,800,23,'#e7cd9b',2)+windows+
+    flag(127,48,'US',1.5)+flag(360,48,'CN',1.5)+flag(593,48,'RU',1.5)+
+    shape('M28 280Q400 197 772 280L723 405H76Z','#294956')+shape('M28 280Q400 216 772 280L744 310H56Z','#657f7f')+
+    rule(77,354,724,354,'#b7c8bb',1.5)+floorGrain(800,378)+
+    president(167,'TRUMP','#d9bd6e','#ad263b','trump')+president(400,'XI','#243238','#9e2538','xi')+president(633,'PUTIN','#b7a58d','#516c86','putin')+
+    [283,516,750].map(x=>rule(x,272,x,226,'#203d4c',2)+dot(x,223,4,'#203d4c')).join('')+
+    [256,485,706].map(x=>box(x,339,34,13,'#eee9d7')+rule(x+4,345,x+27,345,'#a8b9ae',1)).join(''));
 }
 function court(){
   let palace=shape('M204 130V75L232 63H290L306 43H448L466 63H554L578 81V130Z','#c2aa8e','stroke="#778b91" stroke-width="1.4"')+
@@ -87,25 +88,26 @@ function court(){
     rule(652,66,640,101,'#9a793f',1.6)+rule(652,66,665,101,'#9a793f',1.6)+rule(729,66,716,101,'#9a793f',1.6)+rule(729,66,742,101,'#9a793f',1.6)+
     shape('M632 101Q652 127 673 101Z','#c9a458','stroke="#9b7836" stroke-width="1.4"')+shape('M708 101Q728 127 750 101Z','#c9a458','stroke="#9b7836" stroke-width="1.4"')+
     shape('M664 133L680 120H700L716 133Z','#a5803f');
-  return hero('Court',dot(564,45,32,'#f4d6a0')+shape('M0 148Q210 113 800 146V205H0Z','#75978c')+
-    '<g transform="translate(0 29)">'+palace+
-    scales+shape('M206 133H571L666 176H123Z','#d9d3bd')+[140,147,156,167].map((y,i)=>rule(184-i*13,y,595+i*18,y,'#a1ad9f',1)).join('')+
-    bold(385,160,'THE HAGUE · ROHINGYA RULING',15,'#203b49','text-anchor="middle"')+
-    panel(16,12,193,165,'#17354b')+bold(112,111,'9–6',96,'#fff8e9','text-anchor="middle"')+type(112,161,'ICJ RULING',27,'#f0d293','text-anchor="middle" font-weight="700"')+'</g>');
+  return hero('Court',dot(677,62,43,'#f1d29b')+shape('M0 246Q266 197 800 241V430H0Z','#78988a')+
+    `<g transform="translate(-10 34) scale(1.3)">${palace}</g>`+
+    shape('M313 225H669L795 430H176Z','#d8d0ba')+[257,282,313,352].map((y,i)=>rule(291-i*15,y,696+i*21,y,'#a5af9d',1.5)).join('')+
+    `<g transform="translate(-520 110) scale(1.7)">${scales}</g>`+
+    panel(24,82,270,250,'#17354b')+bold(159,235,'9–6',136,'#fff8e9','text-anchor="middle"')+
+    bold(159,300,'ICJ RULING',34,'#f0d293','text-anchor="middle"')+
+    bold(425,397,'THE HAGUE · ROHINGYA RULING',24,'#203b49','text-anchor="middle"'));
 }
 function climate(){
-  let industry='';for(const [x,h] of [[23,55],[64,70],[104,44]])industry+=box(x,99-h,17,h,'#7b949d')+box(x-3,94-h,23,5,'#5d7986');
-  industry+=shape('M26 34Q3 18 19 9Q37-3 59 10Q79 12 91 22Q110 17 134 35','none','stroke="#a2b9c0" stroke-width="12" opacity=".5"');
-  let turbines='';for(const [x,y] of [[602,49],[680,34],[744,62]])turbines+=rule(x,y,x,107,'#567f80',2.5)+rule(x,y,x-24,y-9,'#567f80',2.5)+rule(x,y,x+19,y-15,'#567f80',2.5)+rule(x,y,x+3,y+25,'#567f80',2.5);
-  return hero('Climate',dot(699,34,26,'#ebcb8c')+'<g transform="translate(0 23)">'+industry+
-    shape('M0 111Q136 86 266 111Q509 73 800 99V182H0Z','#9bb49c')+shape('M0 133Q185 98 367 130Q578 100 800 123V182H0Z','#648a77')+turbines+floorGrain(800,163)+
-    '<g transform="translate(-30 -6) scale(1.12)">'+
-    shape('M211 152L238 22L605 34L587 157Z','#1a3849','opacity=".15"')+
-    shape('M205 146L232 15L596 29L578 153Z','url(#Climate-paper)','stroke="#b8b6a5" stroke-width="1.2"')+
-    bold(263,44,'COP31 · DRAFT',26,'#274c50')+rule(258,54,551,65,'#b3bfaf',2)+
-    bold(251,91,'FOSSIL FUELS',40,'#263f51')+rule(247,75,551,100,'#b12c3d',4.5)+
-    rule(248,108,399,115,'#bdc5b5',2)+rule(245,120,361,125,'#bdc5b5',2)+
-    `<g transform="rotate(-10 494 134)">${box(429,103,130,60,'#a8263e','stroke="#f8e9ca" stroke-width="2"')}${bold(494,150,'CUT',44,'#fff7e7','text-anchor="middle"')}</g></g></g>`);
+  let industry='';for(const [x,h] of [[23,112],[68,146],[115,97]])industry+=box(x,264-h,20,h,'#718c95')+box(x-3,257-h,26,7,'#526f7c');
+  industry+=shape('M32 141Q4 110 26 94Q50 81 70 105Q101 99 145 131','none','stroke="#a2b9c0" stroke-width="20" opacity=".5"');
+  let turbines='';for(const [x,y] of [[652,154],[721,130],[776,192]])turbines+=rule(x,y,x,294,'#507b7b',3)+rule(x,y,x-30,y-12,'#507b7b',3)+rule(x,y,x+23,y-20,'#507b7b',3)+rule(x,y,x+4,y+33,'#507b7b',3);
+  return hero('Climate',dot(666,70,41,'#ebcb8c')+industry+shape('M0 280Q148 229 302 273Q552 211 800 259V430H0Z','#8ca98e')+
+    shape('M0 347Q244 284 426 332Q609 278 800 319V430H0Z','#5e8673')+turbines+
+    shape('M151 348L173 71L668 103L632 382Z','#203f4b','opacity=".18"')+
+    shape('M136 335L159 59L655 91L619 369Z','url(#Climate-paper)','stroke="#abae9c" stroke-width="1.8"')+
+    bold(195,127,'COP31 · DRAFT',36,'#274c50')+rule(186,146,600,168,'#b3bfaf',3)+
+    bold(176,218,'FOSSIL FUELS',50,'#263f51')+rule(166,198,584,220,'#b12c3d',6)+
+    rule(173,259,408,272,'#bdc5b5',3)+rule(166,287,366,299,'#bdc5b5',3)+rule(159,314,326,325,'#bdc5b5',3)+
+    `<g transform="rotate(-10 535 306)">${box(443,262,184,88,'#a8263e','stroke="#f8e9ca" stroke-width="2"')}${bold(535,330,'CUT',66,'#fff7e7','text-anchor="middle"')}</g>`);
 }
 function ipo(){
   let windows='';for(let x=13;x<278;x+=19)for(let y=16;y<118;y+=14)windows+=box(x,y,10,7,(x+y)%3?'#6b91a8':'#c4d3ce','opacity=".8"');
@@ -182,8 +184,7 @@ function arctic(){
     rule(342,32,364,91,'#cadbdc',1)+rule(328,53,379,60,'#cadbdc',1)+
     panel(470,12,289,113,'#f8f5e8')+bold(493,39,'ARCTIC SECURITY PACT',16,'#284b5e')+
     bold(494,78,'RATIFIED',29,'#214c69')+flag(645,53,'DK',.58)+flag(688,53,'GL',.58)+flag(731,53,'US',.4)+
-    rule(492,90,738,90,'#bac5bd',1)+type(493,111,'DANISH PARLIAMENT · 19 NOV',14,'#3d5b68','font-weight="700"')+
-    bold(286,132,'GREENLAND',14,'#25495c'));
+    rule(492,90,738,90,'#bac5bd',1)+type(493,111,'DANISH PARLIAMENT · 19 NOV',14,'#3d5b68','font-weight="700"'));
 }
 function jobs(){
   const city=skyline('sydney',[[16,24,44],[55,37,58],[105,30,77],[145,31,48],[191,40,65]],116);

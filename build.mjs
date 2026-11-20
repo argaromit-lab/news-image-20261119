@@ -38,8 +38,13 @@ const compactCopy=s=>s.replace(/\b\d{1,3}(?:,\d{3})+\b/g,number=>new Intl.Number
 const card=s=>{
   return `<article class="story" data-story="${s.id}" style="--region:${color(s.region)};--scene-bg:${sceneBackgrounds[s.art]}"><div class="art">${featureScenes[s.art]()}</div><div class="story-copy"><p class="locator"><b>${s.id}</b><span class="citation"><span class="place">${escape(s.place.split(' · ')[0].toUpperCase())}</span><span class="wire">${escape(sourceName(s.source))}</span><time datetime="${s.date}" title="${escape(s.dateBasis)}">19 Nov ${dateTag[s.art]}</time></span><span class="badge">${escape(s.badge)}</span></p><h2>${title(s.title)}</h2><p class="summary">${escape(compactCopy(s.summary))}</p></div></article>`;
 };
-const brief=s=>`<p class="brief" data-story="${s.id}" style="--region:${color(s.region)}"><span class="id">${s.id}</span><span class="brief-copy"><b>${escape(s.title)}.</b> ${escape(s.summary).replace('OVERTURNED','<strong class="brief-status">OVERTURNED</strong>')}</span><span class="source">${escape(shortSource(s.source))}</span></p>`;
-const briefColumns=[stories.slice(14,21),stories.slice(21,27),stories.slice(27,33)];
+const brief=s=>{
+  const words=escape(s.summary),split=words.lastIndexOf(' ');
+  const first=words.slice(0,split).replace('OVERTURNED','<strong class="brief-status">OVERTURNED</strong>');
+  const last=words.slice(split+1);
+  return `<p class="brief" data-story="${s.id}" style="--region:${color(s.region)}"><span class="id">${s.id}</span><span class="brief-copy"><b>${escape(s.title)}.</b> ${first} <span class="brief-ending">${last} <span class="source">${escape(shortSource(s.source))}</span></span></span></p>`;
+};
+const briefColumns=[stories.slice(14,24),stories.slice(24,33)];
 const replacements={
   FIGURES:figures.map(([number,label,region])=>`<div class="figure" style="--region:${color(region)}"><strong>${escape(number)}</strong><span>${escape(label)}</span></div>`).join(''),
   REGIONS:regions.map(r=>`<span class="region" style="--region:${r.color}"><i aria-hidden="true"></i>${escape(r.name)} ${r.count}</span>`).join(''),
@@ -48,7 +53,6 @@ const replacements={
   THIRD:stories.slice(7,11).map(card).join(''),
   FOURTH:stories.slice(11,14).map(card).join(''),
   MAP:worldMap(stories,featuredCount),
-  MAP_LEGEND:regions.map(r=>`<span style="--region:${r.color}"><i></i>${escape(r.name)} <b>${r.count}</b></span>`).join(''),
   BRIEFS:briefColumns.map(column=>`<div class="brief-column">${column.map(brief).join('')}</div>`).join(''),
   SOURCES:escape(sourceLabels.filter(([key])=>activeSources.has(key)).map(([,label])=>label).join(' · ')),
 };

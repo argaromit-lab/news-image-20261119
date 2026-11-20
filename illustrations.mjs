@@ -244,7 +244,7 @@ const land = [
 
 export function worldMap(stories, featuredCount) {
   const project=(lon,lat)=>[8+(lon+180)/360*584,17+(82-lat)/140*195];
-  const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d5dfd5','stroke="#9fb2b5" stroke-width=".75"')).join('');
+  const coast=land.map(points=>path(points.map(([lon,lat],i)=>`${i?'L':'M'}${project(lon,lat).map(n=>n.toFixed(1)).join(' ')}`).join('')+'Z','#d9c7a1','stroke="#7d9196" stroke-width=".9"')).join('');
   let grid='';for(let lat=-40;lat<=60;lat+=20){const [,y]=project(0,lat);grid+=line(8,y,592,y,'#d4e2e9',.7);}
   const labels={summit:[507,104.6],court:[474,125],climate:[346,88.4],ipo:[153,78.2],gaming:[150,110.5],cyclone:[433,132.6],chips:[529,71.4],tower:[394,106.3],bridge:[378,56.1],arctic:[236,28.1],jobs:[552,200.6],athletics:[361,154.7],cricket:[331,190.4],desert:[166,183.6]};
   const colors={ASIA:'#ac263f',EUROPE:'#315d94','MIDDLE EAST':'#98521c',AMERICAS:'#12634d',AFRICA:'#8b6411',OCEANIA:'#176c86',WORLD:'#535f72'};

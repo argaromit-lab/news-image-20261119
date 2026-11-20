@@ -1,8 +1,30 @@
 # Review checkpoint · 19 November 2026
 
+## Local readability candidate compared with c691ae9
+
+This is a layout-only continuation of `c691ae9`. `stories.mjs` and `SOURCES.md` are byte-for-byte unchanged from that commit: all 33 reports, all 14 features, all 19 briefs, the seven-region accounting, source/date labels and DATE CHECK content remain intact. The source render is **2048 × 2048**, 1,195,826 bytes; the runtime PNG is **1024 × 1024**, **887,714 bytes**. Entry SHA-256: `3ec6430f43b03b37538866076b67832b48eae93860c11c99ef4242a6b76a7906`.
+
+The latest public top three were fetched as PNGs, metadata and 300 px previews outside the repository under `G:\kits\news-image-20261119-samples\`. Native contact sheets retain the source pixel size; thumbnail sheets use exactly 300 px per image. No public image, account identity or external source code was imported into the deliverable. During the check, the baseline submission finished grading and became public rank 3, so the three samples and comparison sheets were refreshed to reflect that update.
+
+| Snapshot | Public development win rate | 90% interval | Canvas |
+| --- | --- | --- | --- |
+| Public #1 | 99.2344% | 99.0296–99.4392% | 1024 × 1024 |
+| Public #2 | 99.2290% | 99.0221–99.4359% | 1024 × 1024 |
+| Public #3, our c691ae9 baseline | 99.2254% | 99.0189–99.4319% | 1024 × 1024 |
+
+The top point-estimate lead over the baseline is **0.0090 percentage points**, with overlapping intervals. Individual rival verdicts and margins remain sealed until the deadline; the public data therefore do not establish which layout choice caused the ranking, or the margin of any direct matchup. All canvases are square, so aspect ratio does not explain the observed distinction.
+
+The repeated visual pattern is a date that occupies much more of the page width, taller first-row image compositions, and wider brief lines with compact trailing sources. The baseline used a 60 px authored date and a 340 px lead row. The candidate uses **100 px** and **460 px** respectively, retaining the dark masthead and 3 + 4 + 4 + 3 grid. The three lead scenes were recomposed vertically with larger people, an enlarged courthouse composition, and a full negotiating document. Supporting headlines rose from 26 to **28 px**. Large labels remain factual and use preserved vector proportions. Map land has stronger visual separation from its water background; its geographic anchors and pins are unchanged.
+
+The lower list moves from three narrow columns with dedicated source cells to **two wider columns with inline sources**, matching the observed reading rhythm. Its font rises from 17 to **18.5 px** on the authored canvas (9.67 to 10.52 px in the 1024 px output). A browser measurement finds **18 of 19 briefs on a single line and one on two lines**. All source text is retained, and each source is kept with the final word to prevent isolated credit lines. Duplicate regional counts under the map were removed; the complete seven-region row above remains. The contact sheets `comparison-after-native.png` and `comparison-after-300.png` stay outside the repository for review.
+
+Final verification: zero geometry problems across **252 HTML text runs**, 14 dated features, 33 source credits, the complete 1–33 sequence and the unchanged four row counts. Pairwise SVG text checks also pass. Two independent browser contexts produce identical master and entry bytes; two fresh offline Linux Node 22 containers and two local processes reproduce the committed PNG. The master fully decodes. Anti-slop reports PASS, severity 0, zero gating findings, 57 editorial advisories, and no external stylesheets. HTML contrast checks on 251 text nodes found a minimum **4.72:1** with zero failures. This candidate has no official jury score; it is held locally for review.
+
+The sections below retain earlier checkpoints.
+
 ## Square precision revision · 3 + 4 + 4 + 3
 
-The current source render is exactly **2048 × 2048**, 1,140,599 bytes. Its RGB PNG entry is **1024 × 1024**, **869,379 bytes**, below the 900,000-byte limit. Entry SHA-256: `855e75689d579f5b5d1832c48337b123e078d0c4244f88ef134ea369bbf9cb61`.
+The c691ae9 source render was exactly **2048 × 2048**, 1,140,599 bytes. Its RGB PNG entry was **1024 × 1024**, **869,379 bytes**, below the 900,000-byte limit. Entry SHA-256: `855e75689d579f5b5d1832c48337b123e078d0c4244f88ef134ea369bbf9cb61`.
 
 The 14 features remain arranged 3 + 4 + 4 + 3. Their image typography now includes white TRUMP / XI / PUTIN nameplates; a large 9–6 ICJ RULING panel; FOSSIL FUELS and a red CUT stamp; IPO $83 · $81.3BN; GTA VI with its 13-year gap and estimated sales; AKVAN · 90–100 KM/H; $1 TRILLION; the reported Riyadh interception; RAIL HALTED; 109–0; 4.9%; BANNED · 3 YRS; 9 WICKETS; and NASA · ATACAMA BLOOM. The image labels preserve forecast, estimate and older-imagery context where needed. The three lead image frames retain their proportions, and foreground flowers and a palace path were removed/reordered where they obscured the XI and ICJ labels.
 
