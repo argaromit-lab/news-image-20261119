@@ -1,8 +1,44 @@
 # Review checkpoint · 19 November 2026
 
+## Square precision revision · 3 + 4 + 4 + 3
+
+The current source render is exactly **2048 × 2048**, 1,140,599 bytes. Its RGB PNG entry is **1024 × 1024**, **869,379 bytes**, below the 900,000-byte limit. Entry SHA-256: `855e75689d579f5b5d1832c48337b123e078d0c4244f88ef134ea369bbf9cb61`.
+
+The 14 features remain arranged 3 + 4 + 4 + 3. Their image typography now includes white TRUMP / XI / PUTIN nameplates; a large 9–6 ICJ RULING panel; FOSSIL FUELS and a red CUT stamp; IPO $83 · $81.3BN; GTA VI with its 13-year gap and estimated sales; AKVAN · 90–100 KM/H; $1 TRILLION; the reported Riyadh interception; RAIL HALTED; 109–0; 4.9%; BANNED · 3 YRS; 9 WICKETS; and NASA · ATACAMA BLOOM. The image labels preserve forecast, estimate and older-imagery context where needed. The three lead image frames retain their proportions, and foreground flowers and a palace path were removed/reordered where they obscured the XI and ICJ labels.
+
+The requested **$120BN AID** deletion was not substantiated in the accessible Nov 19 COP31 reports checked, so it was not added. Those reports support the omission of fossil-fuel wording. The Riyadh report says **no injuries**; the new label therefore says **0 INJURIES REPORTED · SAUDI ACCOUNT**, not an independently verified zero-casualty claim.
+
+There are still 19 briefs, numbered 15–33. Their font is **17 CSS px**, up from 13.5 px: an increase of 3.5 px on the authored canvas, or approximately 1.99 px at the final 1024 px width. The list preserves Han's overturned 15-year term and retrial order and now includes the Nov 19 Bogota national strike (Infobae), Jakarta asset-forfeiture law (ANTARA), and Somalia's UAE-ambassador expulsion order (Reuters via Al Jazeera). These replace the Brazil feedlot trend, Venezuela AI-oil pitch and Mo Ibrahim funding comment while keeping 33 total source-linked records and seven represented regions.
+
+The builder checks all 33 IDs, 14 featured dates, 33 credits and the exact four row counts. It checks HTML blocks and text runs, every SVG text boundary, pairwise map labels and pairwise illustration labels. Final result: **264 HTML text runs, 62 illustration text labels, zero detected overflow/overlap**, and zero duplicate SVG IDs. A contrast check on 245 HTML text nodes found a minimum **4.72:1**, with zero failures. Anti-slop reports PASS, severity 0, zero gating findings, 39 genre advisories and no external stylesheets.
+
+Two fresh Chromium contexts produced byte-identical 2048 px masters and 1024 px entries after explicit font readiness, forced text layout and two animation frames of paint settlement. PNG completeness, chunk CRCs and decoding pass. Two fresh Node processes and two offline Linux Node 22 containers also reproduce the exact entry bytes. Machine-readable results are in ignored `.makefun-kit/render-determinism.json`, `layout-audit.json` and `runtime-audit.json`.
+
+The public target fetched outside the repository was `@hazel-harbor-63`, submission `01a1f47b-f598-7486-a05e-a2a03bc361ab`, at 99.2344% provisional win rate and 318,641 bytes. Final local `vision-critic.py` comparisons returned **58/100 on Groq** and **88/100 on Mistral**, both below the 92 target. The reviews favoured parts of the hierarchy and consistency but did not establish a decisive win; some remarks misdescribed visible details. These are local image critiques, not official scores. This revision is held for review before submission.
+
+The sections below record previous landscape editions.
+
+## Targeted copy and legibility cleanup
+
+The layout, date statement and complete coverage remain unchanged: 14 features, 19 briefs, seven regions, seven figures, 14 dated feature labels and 33 source credits. Seven longer feature summaries were shortened from 413 to 361 characters in total (12.6%), retaining the qualifiers, dates and factual details. The Korea summary now identifies the fourth country to reach the export threshold; the Jepchirchir headline explicitly says doping ban. Repeated words and the terms "boom" and "wait" were removed where clearer wording preserves the same information.
+
+The IPO status badge is now the shorter "DEBUT". Its measured distance from the source/date label increased from 5 px to 53.3 px, with a minimum 47.4 px gap across the featured metadata rows. All badges retain their 18 px height. Supporting copy has slightly stronger contrast, with no new decorative elements. Full-size and 300 px previews were inspected; the small preview is intended to communicate the date, principal headlines and key figures, while the high-resolution master carries the detailed report text.
+
+That master was 3600 × 2680 and 2,134,478 bytes. Its 1024 × 762 runtime PNG was 683,131 bytes, SHA-256 `eac7e71d7f0e3d879dca211e806575e47707c21e55086b6072e50536c86841cb`. The audit covered 236 HTML text runs with zero detected layout problems. It confirmed the 1–33 sequence, all source/date labels and the seven-region accounting. PNG integrity, high-resolution decoding, two local executions and two fresh offline Linux Node 22 executions passed. Anti-slop reported PASS, severity 0, zero gating findings and 39 editorial advisories.
+
+## Day naming, breadth, clarity and source fidelity
+
+This revision prioritizes the official judging order. It preserves all 14 featured stories, 19 briefs, seven regional counts and 33 unique source links. The masthead now spells out Thursday 19 November 2026 in both the date and the day-only statement. Each featured card displays its outlet and a qualifying 19 Nov event/ruling/report/release label; the brief section explicitly names Thursday 19 November. The build checks all 14 featured dates and all 33 source credits, in addition to the sequential story IDs and regional accounting.
+
+Substantive corrections follow the rechecked reports: the updated Al Jazeera/Reuters Nasdaq article gives $111.50 rather than the earlier $111 quote; the $83 pricing is identified as November 18 context. AP's credited Han report describes a retrial, not an acquittal. The Myanmar body copy specifies the 2017 atrocities as the background to the new ruling. COP31 remains a revised draft, the Saudi and Russian accounts remain attributed, Akvan is a Nov 19 forecast bulletin for Nov 20 landfall, Australia's figures are October data released Nov 19, and the Atacama item is a new report using older imagery. The generated `SOURCES.md` links the 33 records and explains these date bases. Some Reuters pages require access; this revision does not claim to have independently re-fetched and recertified every original ledger entry.
+
+That 3600 × 2680 master was 2,131,867 bytes. Its 1024 × 762 runtime image was 684,955 bytes, with SHA-256 `4971fdcd8dd0704b7ee0765500e83cd0fc3821c1c4eb21fd231d0d800caa05f7`. The geometry audit covered 237 HTML text runs with zero detected problems, 14 dated featured cards, 33 source credits and the complete 1–33 story sequence. PNG completeness and CRCs passed; two local processes and two fresh offline Linux Node 22 containers produced identical runtime bytes. The high-resolution PNG fully decoded. Anti-slop reported PASS, severity 0, zero gating findings and 39 editorial advisories with no external stylesheets.
+
+The sections below retain the earlier visual and source-review checkpoints.
+
 ## Illustration and editorial rebuild
 
-The current master is 3600 × 2680 and 2,061,274 bytes. The 1024 × 762 runtime image is 657,701 bytes, with SHA-256 `0bfa820dad4e683edbe29970d74c8e48b9072565defba1b68f986dfd5f90e9b9`. All 14 features, 19 briefs, and 33 distinct source records remain present. This revision has not been submitted.
+The earlier master was 3600 × 2680 and 2,061,274 bytes. Its 1024 × 762 runtime image was 657,701 bytes, with SHA-256 `0bfa820dad4e683edbe29970d74c8e48b9072565defba1b68f986dfd5f90e9b9`. All 14 features, 19 briefs, and 33 distinct source records remained present at that checkpoint.
 
 The new `editorial-art.mjs` composes all fourteen images for their card proportions. Each SVG preserves its aspect ratio. Shared material and sky gradients, architectural detail, human poses, paper documents, and geographic context replace the stretched strip drawings. The lead scenes depict the Shenzhen table and named presidents, the Peace Palace with the 9–6 verdict and scales, and a COP31 negotiating document with a solid red CUT stamp. The remaining scenes cover Nasdaq, Vice City, the offshore cyclone forecast, Busan exports, Riyadh debris, the Kerch rail bridge, the Arctic agreement, Australian labour data, the AIU ban, the Johannesburg Test, and Landsat imagery of the Atacama.
 

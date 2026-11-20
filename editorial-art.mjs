@@ -11,10 +11,31 @@ const type=(x,y,words,size=15,fill=ink,extra='')=>`<text x="${x}" y="${y}" font-
 const bold=(x,y,words,size=18,fill=ink,extra='')=>type(x,y,words,size,fill,`font-weight="700" ${extra}`);
 const panel=(x,y,w,h,fill='#f9f8f0')=>box(x+3,y+4,w,h,'#263f51','opacity=".12"')+box(x,y,w,h,fill,'stroke="#8197a0" stroke-width="1"');
 const floorGrain=(w,y)=>Array.from({length:18},(_,i)=>rule(12+i*47,y+i%3*4,30+i*47,y+i%3*4,'#adc2bd',.6,'opacity=".28"')).join('');
-const hero=(id,content)=>scene(id,800,205,box(0,0,800,205,`url(#${id}-sky)`)+content,'#173647');
+const hero=(id,content)=>scene(id,800,245,box(0,0,800,245,`url(#${id}-sky)`)+`<g transform="translate(0 18)">${content}</g>`,'#173647');
+const imageLabels={
+  IPO:{main:'IPO $83 · $81.3BN',sub:'OFFER PRICE · GROSS PROCEEDS',size:52,bg:'#15354d',fg:'#ffe2a0'},
+  Gaming:{main:'GTA VI',sub:'13 YEARS · 17M+ COPIES EST.',size:58,bg:'#263c58',fg:'#fff3d5'},
+  Cyclone:{main:'AKVAN · 90–100 KM/H',sub:'20 NOV LANDFALL FORECAST',size:48,bg:'#183f57',fg:'#fff7e8'},
+  Exports:{main:'$1 TRILLION',size:72,bg:'#194c48',fg:'#fff5da'},
+  Riyadh:{main:'INTERCEPTED',sub:'0 INJURIES REPORTED · SAUDI ACCOUNT',size:56,bg:'#27564d',fg:'#fff5e1'},
+  Kerch:{main:'RAIL HALTED',size:66,bg:'#a5263c',fg:'#fff8e7'},
+  Arctic:{main:'109–0',size:82,bg:'#1f4864',fg:'#fff7e6'},
+  Jobs:{main:'4.9%',size:82,bg:'#1b5a75',fg:'#fff6df'},
+  Athletics:{main:'BANNED · 3 YRS',size:54,bg:'#f6efdd',fg:'#a6243b',stamp:true},
+  Cricket:{main:'9 WICKETS',size:78,bg:'#184d43',fg:'#fff4d8'},
+  Atacama:{main:'NASA · ATACAMA BLOOM',sub:'SEP–OCT IMAGERY · REPORT 19 NOV',size:58,bg:'#244659',fg:'#fff5dd'},
+};
+function imageLabel(id,w,y){
+  const d=imageLabels[id];if(!d)return'';
+  if(d.stamp)return box(0,y,w,95,d.bg)+`<g transform="rotate(-4 ${w/2} ${y+47})">${box(w/2-280,y+14,560,60,d.bg,`stroke="${d.fg}" stroke-width="3.5"`)}${bold(w/2,y+62,d.main,d.size,d.fg,'text-anchor="middle"')}</g>`;
+  return box(0,y,w,95,d.bg)+(d.sub?
+    bold(w/2,y+49,d.main,d.size,d.fg,'text-anchor="middle"')+bold(w/2,y+87,d.sub,22,d.fg,'text-anchor="middle"'):
+    bold(w/2,y+75,d.main,d.size,d.fg,'text-anchor="middle"'));
+}
 function scene(id,w,h,content,bg='#dfeaf0'){
   const finish=`<linearGradient id="${id}-finish" x2=".18" y2="1"><stop stop-color="#fff0cd" stop-opacity=".12"/><stop offset=".5" stop-color="#cde4df" stop-opacity="0"/><stop offset="1" stop-color="#142d42" stop-opacity=".19"/></linearGradient>`;
-  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs>${finish}<linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,h,bg)}${content}${box(0,0,w,h,`url(#${id}-finish)`)}</svg>`;
+  const totalHeight=h+(imageLabels[id]?95:0);
+  return `<svg role="img" aria-label="${esc(id)}" viewBox="0 0 ${w} ${totalHeight}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"><defs>${finish}<linearGradient id="${id}-sky" x2=".2" y2="1"><stop stop-color="#9dbdcb"/><stop offset=".76" stop-color="#e7dcc1"/><stop offset="1" stop-color="#edcb94"/></linearGradient><linearGradient id="${id}-glass" x2="1" y2=".4"><stop stop-color="#35566e"/><stop offset=".42" stop-color="#a9cbd5"/><stop offset=".55" stop-color="#527b91"/><stop offset="1" stop-color="#1b3c57"/></linearGradient><linearGradient id="${id}-water" x2="0" y2="1"><stop stop-color="#7eafba"/><stop offset="1" stop-color="#37677d"/></linearGradient><linearGradient id="${id}-paper" x2=".6" y2="1"><stop stop-color="#fffef5"/><stop offset="1" stop-color="#e5dfce"/></linearGradient></defs>${box(0,0,w,totalHeight,bg)}${content}${box(0,0,w,h,`url(#${id}-finish)`)}${imageLabel(id,w,h)}</svg>`;
 }
 function flag(x,y,country,scale=1){
   let cloth='';
@@ -41,7 +62,7 @@ function skyline(id,buildings,base=110){
 }
 function president(x,name,hair,tie,kind){
   const top=kind==='trump'?'M-16 5Q-17-13 1-11Q21-14 23 2L12 4L2-2L-10 4L-15 13Z':kind==='xi'?'M-17 9Q-21-13 0-12Q23-13 20 10L14 0Q0-5-12 0L-15 12Z':'M-17 11Q-21-5-9-9L-6-3L-12 2L-13 13ZM12 12L13-2L7-8Q21-5 19 10Z';
-  return `<g transform="translate(${x} 66)">${oval(1,63,45,6,'#163447','opacity=".15"')}${shape('M-37 69L-31 39Q-27 30-11 29H10Q27 31 32 41L38 69Z','#243a51')}${shape('M-12 30L0 52L12 30Z','#fff9ee')}${shape('M-3 36H3L7 62L0 68L-7 62Z',tie)}${shape('M-15 5Q-17 18-12 27Q-7 34 1 34Q11 32 16 22L18 6Z','#d9ac8c','stroke="#b68a73" stroke-width="1"')}${shape('M2 7Q10 13 12 23L6 30Q14 28 17 20L18 6Z','#bd8a70','opacity=".35"')}${shape(top,hair)}${rule(-10,12,-4,12,'#594e4b',1.4)}${rule(6,12,12,12,'#594e4b',1.4)}${shape('M2 14L4 23H0','none','stroke="#a67967" stroke-width="1"')}${rule(-4,27,6,27,'#8d5b55',1.2)}${rule(-26,44,-17,60,'#516779',1.5)}${rule(26,44,18,60,'#102e44',1.5)}${box(-43,68,86,19,'#163347','stroke="#b7c9cb" stroke-width="1"')}${bold(0,82,name,14,'#fff4da','text-anchor="middle"')}</g>`;
+  return `<g transform="translate(${x} 66)">${oval(1,63,45,6,'#163447','opacity=".15"')}${shape('M-37 69L-31 39Q-27 30-11 29H10Q27 31 32 41L38 69Z','#243a51')}${shape('M-12 30L0 52L12 30Z','#fff9ee')}${shape('M-3 36H3L7 62L0 68L-7 62Z',tie)}${shape('M-15 5Q-17 18-12 27Q-7 34 1 34Q11 32 16 22L18 6Z','#d9ac8c','stroke="#b68a73" stroke-width="1"')}${shape('M2 7Q10 13 12 23L6 30Q14 28 17 20L18 6Z','#bd8a70','opacity=".35"')}${shape(top,hair)}${rule(-10,12,-4,12,'#594e4b',1.4)}${rule(6,12,12,12,'#594e4b',1.4)}${shape('M2 14L4 23H0','none','stroke="#a67967" stroke-width="1"')}${rule(-4,27,6,27,'#8d5b55',1.2)}${rule(-26,44,-17,60,'#516779',1.5)}${rule(26,44,18,60,'#102e44',1.5)}${box(-93,58,186,52,'#fffdf1','stroke="#293f50" stroke-width="2"')}${bold(0,99,name,44,'#183447','text-anchor="middle"')}</g>`;
 }
 function summit(){
   const city=skyline('summit',[[23,33,53],[70,27,73],[111,41,45],[166,31,88],[213,37,58],[558,35,65],[604,26,84],[644,42,52],[700,28,70],[742,35,44]],113);
@@ -53,8 +74,7 @@ function summit(){
     flag(148,18,'US',1.15)+flag(370,18,'CN',1.15)+flag(590,18,'RU',1.15)+
     shape('M38 147Q399 99 762 147L711 180H89Z','#2c4c59')+shape('M38 147Q399 112 762 147L725 160H75Z','#607e82')+rule(89,165,712,165,'#c0cec1',1)+floorGrain(800,172)+
     president(177,'TRUMP','#d9bd6e','#ad263b','trump')+president(400,'XI','#243238','#9e2538','xi')+president(623,'PUTIN','#b7a58d','#516c86','putin')+
-    [250,468,690].map(x=>box(x,139,27,9,'#f4ecda')+rule(x,144,x+20,144,'#a5b9b9',1)+rule(x+10,138,x+13,121,'#263f51',1.4)+dot(x+13,120,2,'#233b4b')).join('')+
-    oval(400,152,27,5,'#1b3648','opacity=".25"')+shape('M376 149Q400 131 424 149Z','#567b68')+[386,396,405,415].map((x,i)=>dot(x,143-i%2*4,4,['#d9b87f','#a33849'][i%2])).join('')+'</g>');
+    [279,503,726].map(x=>box(x,139,27,9,'#f4ecda')+rule(x,144,x+20,144,'#a5b9b9',1)+rule(x+10,138,x+13,121,'#263f51',1.4)+dot(x+13,120,2,'#233b4b')).join('')+'</g>');
 }
 function court(){
   let palace=shape('M204 130V75L232 63H290L306 43H448L466 63H554L578 81V130Z','#c2aa8e','stroke="#778b91" stroke-width="1.4"')+
@@ -69,9 +89,9 @@ function court(){
     shape('M664 133L680 120H700L716 133Z','#a5803f');
   return hero('Court',dot(564,45,32,'#f4d6a0')+shape('M0 148Q210 113 800 146V205H0Z','#75978c')+
     '<g transform="translate(0 29)">'+palace+
-    panel(28,24,151,109,'#17354b')+bold(103,84,'9–6',55,'#fff8e9','text-anchor="middle"')+type(103,110,'ICJ VERDICT',15,'#f0d293','text-anchor="middle" font-weight="700"')+
     scales+shape('M206 133H571L666 176H123Z','#d9d3bd')+[140,147,156,167].map((y,i)=>rule(184-i*13,y,595+i*18,y,'#a1ad9f',1)).join('')+
-    bold(385,160,'THE HAGUE · ROHINGYA RULING',15,'#203b49','text-anchor="middle"')+'</g>');
+    bold(385,160,'THE HAGUE · ROHINGYA RULING',15,'#203b49','text-anchor="middle"')+
+    panel(16,12,193,165,'#17354b')+bold(112,111,'9–6',96,'#fff8e9','text-anchor="middle"')+type(112,161,'ICJ RULING',27,'#f0d293','text-anchor="middle" font-weight="700"')+'</g>');
 }
 function climate(){
   let industry='';for(const [x,h] of [[23,55],[64,70],[104,44]])industry+=box(x,99-h,17,h,'#7b949d')+box(x-3,94-h,23,5,'#5d7986');
@@ -80,12 +100,12 @@ function climate(){
   return hero('Climate',dot(699,34,26,'#ebcb8c')+'<g transform="translate(0 23)">'+industry+
     shape('M0 111Q136 86 266 111Q509 73 800 99V182H0Z','#9bb49c')+shape('M0 133Q185 98 367 130Q578 100 800 123V182H0Z','#648a77')+turbines+floorGrain(800,163)+
     '<g transform="translate(-30 -6) scale(1.12)">'+
-    shape('M211 152L238 22L527 34L509 157Z','#1a3849','opacity=".15"')+
-    shape('M205 146L232 15L518 29L500 153Z','url(#Climate-paper)','stroke="#b8b6a5" stroke-width="1.2"')+
-    bold(263,48,'COP31 · DRAFT',21,'#274c50')+rule(258,59,470,69,'#b3bfaf',2)+
-    bold(251,91,'FOSSIL FUELS',26,'#394f54')+rule(247,79,477,101,'#b12c3d',3.5)+
+    shape('M211 152L238 22L605 34L587 157Z','#1a3849','opacity=".15"')+
+    shape('M205 146L232 15L596 29L578 153Z','url(#Climate-paper)','stroke="#b8b6a5" stroke-width="1.2"')+
+    bold(263,44,'COP31 · DRAFT',26,'#274c50')+rule(258,54,551,65,'#b3bfaf',2)+
+    bold(251,91,'FOSSIL FUELS',40,'#263f51')+rule(247,75,551,100,'#b12c3d',4.5)+
     rule(248,108,399,115,'#bdc5b5',2)+rule(245,120,361,125,'#bdc5b5',2)+
-    `<g transform="rotate(-10 469 127)">${box(422,107,95,37,'#a8263e','stroke="#f8e9ca" stroke-width="1.5"')}${bold(469,135,'CUT',27,'#fff7e7','text-anchor="middle"')}</g></g></g>`);
+    `<g transform="rotate(-10 494 134)">${box(429,103,130,60,'#a8263e','stroke="#f8e9ca" stroke-width="2"')}${bold(494,150,'CUT',44,'#fff7e7','text-anchor="middle"')}</g></g></g>`);
 }
 function ipo(){
   let windows='';for(let x=13;x<278;x+=19)for(let y=16;y<118;y+=14)windows+=box(x,y,10,7,(x+y)%3?'#6b91a8':'#c4d3ce','opacity=".8"');
@@ -93,7 +113,7 @@ function ipo(){
     shape('M275 0Q400-15 500 7V140H275Z','url(#IPO-glass)')+shape('M304 1Q376-8 439 0V140H304Z','#b4d0d9','opacity=".15"')+
     box(300,26,171,76,'#142f49')+bold(385,56,'NASDAQ',24,'#eef4ed','text-anchor="middle"')+bold(385,87,'ANT',28,'#f8d692','text-anchor="middle"')+
     panel(528,24,244,93,'#f8f8ed')+type(546,45,'OFFER',12,'#546c77')+type(666,45,'DEBUT',12,'#546c77')+
-    bold(546,82,'$83',27,'#3c5969')+bold(666,82,'$111',30,'#185d4c')+rule(617,66,647,66,'#9f793b',2.5)+shape('M641 61L649 66L641 71Z','#9f793b')+
+    bold(546,82,'$83',27,'#3c5969')+bold(660,82,'$111.50',23,'#185d4c')+rule(617,66,647,66,'#9f793b',2.5)+shape('M641 61L649 66L641 71Z','#9f793b')+
     rule(544,91,754,91,'#ccd3cb',1)+bold(546,108,'$81.3bn GROSS IPO',14,'#2b4d5b')+
     shape('M0 124H800V140H0Z','#718b91')+[39,89,165,224,515,783].map(x=>dot(x,117,4,'#3a5362')+shape(`M${x-5} 140V127Q${x} 121 ${x+5} 127V140Z`,'#3a5362')).join(''));
 }
@@ -107,8 +127,7 @@ function gaming(){
     box(0,120,800,20,'#4b6374')+rule(0,133,800,133,'#bda486',1.5)+palm(99,42)+palm(681,38)+
     shape('M288 130L308 113L374 111L400 127H426L437 136H276Z','#244552')+shape('M315 115H372L386 125H302Z','#accdd1')+
     dot(308,136,7,'#24384b')+dot(409,136,7,'#24384b')+rule(304,128,408,128,'#dfc290',1.4)+
-    bold(402,40,'GTA VI',36,'#fff4da','text-anchor="middle" stroke="#795975" stroke-width="1.5" paint-order="stroke"')+
-    type(401,59,'VICE CITY · WORLDWIDE LAUNCH',13,'#2c485c','text-anchor="middle" font-weight="700"'));
+    bold(402,32,'VICE CITY',28,'#fff4da','text-anchor="middle" stroke="#795975" stroke-width="1" paint-order="stroke"'));
 }
 function cyclone(){
   let spirals='';for(const angle of [0,72,144,216,288])spirals+=`<g transform="translate(468 72) rotate(${angle})">${shape('M-6-6C12-47 59-43 70-12C40-29 18-17 10 4C2 26-20 36-36 26C-10 28 2 12-6-6Z','#e8f2f2','opacity=".92"')}</g>`;
@@ -118,8 +137,8 @@ function cyclone(){
     shape('M0 103Q132 74 263 102L233 140H0Z','#8eaa9d')+rule(297,46,270,91,'#5e867f',1)+
     dot(287,61,4,'#a82b3f','stroke="#fff" stroke-width="1"')+bold(169,57,'GOPALPUR',14,'#274a55')+bold(34,31,'INDIA · ODISHA',18,'#274a55')+
     shape('M442 75Q357 70 298 61','none','stroke="#efc271" stroke-width="2.2" stroke-dasharray="6 4"')+shape('M306 54L294 60L306 66Z','#efc271')+spirals+dot(468,72,7,'#2d627b')+
-    panel(603,20,174,93,'#eaf1ee')+bold(690,49,'AKVAN',25,'#264d63','text-anchor="middle"')+type(690,72,'90–100 km/h',20,'#264d63','text-anchor="middle" font-weight="700"')+
-    type(690,95,'FRIDAY · FORECAST',13,'#7e452c','text-anchor="middle" font-weight="700"')+
+    panel(603,20,174,93,'#eaf1ee')+bold(690,48,'IMD · 19 NOV',22,'#264d63','text-anchor="middle"')+type(690,74,'20 NOV LANDFALL',17,'#264d63','text-anchor="middle" font-weight="700"')+
+    type(690,98,'FORECAST',20,'#7e452c','text-anchor="middle" font-weight="700"')+
     shape('M60 117H133L122 128H70Z','#536e70')+rule(92,115,92,91,'#365766',1.5)+rule(48,130,154,130,'#bfd0c7',1.5));
 }
 function exportsScene(){
@@ -162,7 +181,7 @@ function arctic(){
     shape('M302 31L336 9L382 21L404 52L384 72L368 106L344 118L334 91L312 66Z','#f1f4ec','stroke="#8ea8b2" stroke-width="1.5"')+
     rule(342,32,364,91,'#cadbdc',1)+rule(328,53,379,60,'#cadbdc',1)+
     panel(470,12,289,113,'#f8f5e8')+bold(493,39,'ARCTIC SECURITY PACT',16,'#284b5e')+
-    bold(494,78,'109–0',35,'#214c69')+flag(645,53,'DK',.58)+flag(688,53,'GL',.58)+flag(731,53,'US',.4)+
+    bold(494,78,'RATIFIED',29,'#214c69')+flag(645,53,'DK',.58)+flag(688,53,'GL',.58)+flag(731,53,'US',.4)+
     rule(492,90,738,90,'#bac5bd',1)+type(493,111,'DANISH PARLIAMENT · 19 NOV',14,'#3d5b68','font-weight="700"')+
     bold(286,132,'GREENLAND',14,'#25495c'));
 }
@@ -172,7 +191,7 @@ function jobs(){
   return scene('Jobs',800,140,box(0,0,800,140,'url(#Jobs-sky)')+city+box(0,112,800,28,'url(#Jobs-water)')+sails+
     shape('M20 106Q118 19 212 104','none','stroke="#667f88" stroke-width="3"')+[43,76,109,142,175].map((x,i)=>rule(x,70-Math.sin(i/4*Math.PI)*11,x,108,'#667f88',1.2)).join('')+
     panel(402,15,368,109,'#f8f7ee')+bold(423,42,'AUSTRALIA · OCTOBER LABOUR DATA',15,'#2a5366')+
-    bold(424,91,'4.9%',47,'#1e6781')+type(599,71,'753.7k',26,'#264d61','font-weight="700"')+type(599,93,'UNEMPLOYED',13,'#4a6370','font-weight="700"')+
+    bold(424,91,'ABS',42,'#1e6781')+type(599,76,'753.7k',32,'#264d61','font-weight="700"')+type(599,99,'UNEMPLOYED',13,'#4a6370','font-weight="700"')+
     rule(423,102,750,102,'#c2cdc6',1)+type(423,118,'ABS RELEASE · 19 NOVEMBER',13,'#4a6370'));
 }
 function athletics(){
@@ -182,7 +201,7 @@ function athletics(){
     shape('M0 75Q204 34 377 66Q721 38 1120 72V140H0Z','#8da68e')+box(0,88,1120,52,'#a76255')+track+
     shape('M43 64H223L216 88H50Z','#334f47')+rule(43,62,222,62,'#e8dec2',4)+bold(132,82,'KENYA',20,'#f3eacb','text-anchor="middle"')+
     runner+panel(732,20,337,92,'#faf7ed')+bold(752,46,'ATHLETICS INTEGRITY UNIT',17,'#37524f')+
-    bold(752,81,'3-YEAR BAN',32,'#a62b3e')+type(753,103,'PERES JEPCHIRCHIR · EPO VIOLATION',14,'#4e605e'));
+    bold(752,81,'EPO VIOLATION',30,'#a62b3e')+type(753,103,'PERES JEPCHIRCHIR',17,'#4e605e'));
 }
 function cricket(){
   let stadium='';for(let i=0;i<8;i++)stadium+=shape(`M${20+i*7} ${54+i*4}Q560 ${i*4-15} ${1100-i*7} ${54+i*4}`,'none','stroke="'+(i%2?'#839d98':'#bec9b7')+'" stroke-width="3"');
@@ -191,8 +210,8 @@ function cricket(){
     shape('M0 82Q560 33 1120 82V140H0Z','#7e9e74')+shape('M359 140L404 78H567L625 140Z','#d8c69b')+
     [532,540,548].map(x=>rule(x,96,x,123,'#f8f5e4',3)).join('')+rule(530,95,551,95,'#f8f5e4',2)+bowler+dot(568,27,4,'#ae3040')+
     shape('M569 28Q628 47 547 104','none','stroke="#dce9ce" stroke-width="1.4" stroke-dasharray="5 5"')+
-    panel(745,23,328,90,'#153f3a')+bold(768,49,'SOUTH AFRICA',19,'#f6edce')+
-    bold(768,84,'WIN BY 9 WICKETS',28,'#fff8e7')+type(769,104,'FIRST TEST · HARMER 6–51',15,'#d1dfcb')+
+    panel(745,23,328,94,'#153f3a')+bold(768,44,'SOUTH AFRICA',19,'#f6edce')+
+    bold(768,79,'FIRST TEST',31,'#fff8e7')+type(769,110,'HARMER 6–51',20,'#d1dfcb')+
     bold(29,35,'JOHANNESBURG',16,'#31584b'));
 }
 function desert(){

@@ -24,7 +24,7 @@ while(pos<image.length){
   if(type==='IDAT')chunks.push(image.subarray(pos+8,pos+8+length));
   pos=end;if(type==='IEND'){ended=true;break;}
 }
-if(!ended||pos!==image.length||!header||header.readUInt32BE(0)!==1024||header.readUInt32BE(4)!==762)throw new Error('Incomplete or incorrectly sized landscape image');
+if(!ended||pos!==image.length||!header||header.readUInt32BE(0)!==1024||header.readUInt32BE(4)!==1024)throw new Error('Incomplete or incorrectly sized square image');
 const width=header.readUInt32BE(0),height=header.readUInt32BE(4);
 const decoded=inflateSync(Buffer.concat(chunks));
 const channels={0:1,2:3,4:2,6:4}[header[9]];

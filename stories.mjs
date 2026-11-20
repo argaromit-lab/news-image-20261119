@@ -96,65 +96,80 @@ const ledger = [
   {id:33,region:'WORLD',place:'SPACE SCIENCE',source:'NASA',date:'2026-11-19',lon:null,lat:null,
     url:'https://science.nasa.gov/open-science/fermi-data-pulsar-discovery/',
     note:'NASA report published Nov 19, 10:33am EST, describes a method for finding pulsars. No terrestrial map location.'},
+  {id:34,region:'AMERICAS',place:'Bogota',source:'Infobae',date:'2026-11-19',lon:-74.07,lat:4.71,
+    url:'https://www.infobae.com/colombia/2026/11/19/paro-nacional-en-vivo-hoy-19-de-noviembre-asi-amanecen-las-vias-de-las-principales-ciudades/',
+    note:'Nov 19 live coverage reports the national strike and marches in Bogota and other Colombian cities, including transport disruption.'},
+  {id:35,region:'ASIA',place:'Jakarta',source:'ANTARA',date:'2026-11-19',lon:106.85,lat:-6.2,
+    url:'https://en.antaranews.com/news/443759/indonesia-parliament-passes-long-awaited-asset-forfeiture-bill',
+    note:'ANTARA report dated Nov 19, 14:07 GMT+7, says parliament passed the asset-forfeiture bill that Thursday after 18 years of deliberations.'},
+  {id:36,region:'AFRICA',place:'Somalia',source:'Reuters',date:'2026-11-19',lon:45.34,lat:2.05,
+    url:'https://www.aljazeera.com/news/2026/11/19/somalia-expels-uae-ambassador-accuses-abu-dhabi-of-violating-sovereignty',
+    note:'Nov 19 Al Jazeera report by Noor Kareem and Reuters describes Somalia ordering the UAE ambassador to leave within 72 hours.'},
 ];
 
 const updatedSources = {
-  2:{url:'https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south'},
+  2:{source:'Al Jazeera · Reuters',url:'https://www.aljazeera.com/news/2026/11/19/saudi-led-coalition-intercepts-houthi-missiles-targeting-riyadh-and-south',
+    note:'Nov 19 report credits Al Jazeera Staff and Reuters. Saudi authorities attribute tower damage to debris after an interception. The report says no injuries were reported; the image uses that narrower wording, not an independently verified claim of zero casualties.'},
   3:{source:'Al Jazeera',url:'https://www.aljazeera.com/news/2026/11/19/un-top-court-finds-myanmar-killed-10000-rohingya-as-it-rules-on-genocide'},
   12:{source:'AP · AFP',url:'https://www.aljazeera.com/news/2026/11/19/home-of-bangladeshs-former-leader-muhammad-yunus-set-on-fire'},
+  13:{source:'AP',url:'https://www.aljazeera.com/news/2026/11/19/south-korean-court-orders-retrial-for-ex-pm-han-over-martial-law-attempt',
+    note:'Nov 19 report credits Al Jazeera, Reuters and AP. Han’s 15-year sentence was overturned and the case sent for retrial; this is not an acquittal.'},
   17:{source:'AFP · Reuters',place:'GREENLAND · SECURITY',url:'https://www.aljazeera.com/news/2026/11/19/denmark-parliament-approves-security-deal-with-greenland-and-us',
     note:'All 109 Danish lawmakers present voted yes on Nov 19, with no votes against or abstentions. Greenland remains within the Kingdom of Denmark.'},
+  29:{source:'Al Jazeera · Reuters',
+    note:'The Nov 19 trading report credits Andy Hirschfeld and Reuters. The updated report gives the opening quote as $111.50, superseding its earlier $111 wording. The $83 offer price was set on Nov 18; $81.3bn is gross IPO proceeds including selling holders, not the company valuation.'},
 };
 
 // Lead and feature order, followed by the two reading columns of briefs.
 export const featuredCount = 14;
 const edition = [
-  [1, 'Trump, Xi & Putin\nhold summit', 'China and Russia say the leaders’ joint declaration rejects nuclear war.'],
-  [3, 'Myanmar committed\ngenocide, court rules', 'Myanmar must allow safe Rohingya returns and pay compensation.'],
-  [5, 'COP31 drops\nfossil fuel language', 'Antalya’s revised negotiating text omits all fossil fuel references.'],
-  [29, 'Anthropic’s $81.3bn\nmarket debut', 'Shares open at $111 on Nasdaq after an IPO priced at $83.'],
-  [6, 'GTA VI ends the\n13-year wait', 'Sensor Tower estimates 17m+ copies sold at launch.'],
-  [31, 'Akvan puts India’s\neast coast on alert', 'IMD forecasts Friday landfall near Gopalpur.'],
-  [7, 'South Korea exports\npass $1 trillion', 'The AI chip boom helps make it fourth worldwide.'],
-  [2, 'Missile debris hits\nRiyadh tower', 'The Saudi-led coalition reports missile intercepts.'],
-  [4, 'Crimea bridge\nrail traffic halted', 'Russia reports a third strike in a week.'],
-  [17, 'Denmark backs\nArctic security pact', 'The US–Greenland deal wins a 109–0 vote.'],
-  [30, 'Australia’s jobless\nrate reaches 4.9%', 'ABS counts 753,700 unemployed in October.'],
-  [32, 'Jepchirchir banned\nfor three years', 'Kenya’s marathon champion admits an EPO violation, the AIU says.'],
-  [11, 'South Africa wins\nby nine wickets', 'Harmer’s 6–51 helps beat Bangladesh in the first Test.'],
-  [10, 'A desert in bloom,\nseen from space', 'NASA’s new report maps Atacama blooms in September–October imagery.'],
+  [1, 'Trump, Xi & Putin\nhold summit', 'China and Russia say the declaration rejects nuclear war.'],
+  [3, 'World Court: Myanmar\ncommitted genocide', '2017 Rohingya atrocities: safe returns, compensation ordered.'],
+  [5, 'COP31 draft drops\nfossil fuel language', 'Negotiators publish revised text in Antalya.'],
+  [29, 'Anthropic opens\non Nasdaq at $111.50', '$81.3bn IPO; $83 offer price set on 18 Nov.'],
+  [6, 'GTA VI launches\n13 years after GTA V', 'Sensor Tower estimates 17m+ copies sold.'],
+  [31, 'Akvan prompts\nIndia cyclone warning', '19 Nov forecast: 20 Nov landfall near Gopalpur.'],
+  [7, 'South Korea exports\npass $1 trillion', 'Fourth country to reach $1tn, aided by AI chips.'],
+  [2, 'Riyadh tower damaged,\nSaudi officials say', 'Officials say interception debris caused damage.'],
+  [4, 'Russia reports strike\non Crimea rail bridge', 'Rail traffic halts after a third strike in a week.'],
+  [17, 'Denmark backs\nArctic security pact', 'MPs ratify the US pact on Greenland, 109–0.'],
+  [30, 'Australia reports\n4.9% jobless rate', 'October data: 753,700 unemployed, ABS says.'],
+  [32, 'Jepchirchir given\nthree-year doping ban', 'Marathon champion admitted an EPO violation, AIU says.'],
+  [11, 'South Africa wins\nby nine wickets', 'Harmer takes 6–51; Bangladesh loses the first Test.'],
+  [10, 'NASA reports\nAtacama desert bloom', 'New report uses September–October Landsat images.'],
   [12, 'Bangladesh', 'Hasina supporters burn Yunus’s ancestral home.'],
-  [13, 'South Korea', 'Court overturns Han’s 15-year term.'],
+  [13, 'Seoul', 'Top court: ex-PM Han’s 15-year term OVERTURNED; retrial.'],
   [14, 'Taiwan', 'Sources: TSMC tightens China AI chip curbs.'],
   [15, 'China', 'Alibaba beats quarterly revenue estimates.'],
   [16, 'Brussels', 'EU Commission confirms a cyberattack.'],
   [18, 'Iran', 'Western powers seek nuclear-site inspections.'],
   [19, 'Gaza', 'Israel says its tank raid ended.'],
   [20, 'Iraq', 'Officials report a deal with a pro-Iran militia.'],
-  [9, 'Senegal', 'NGO: Dozens missing after a migrant boat capsizes.'],
+  [9, 'Senegal', 'NGO: Dozens missing after migrant boat capsizes.'],
   [8, 'Frankfurt', 'ECB says banks’ data-centre lending grows.'],
-  [21, 'Africa', 'Mo Ibrahim urges domestic funding as aid falls.'],
+  [36, 'Somalia', 'Orders UAE ambassador out; recalls envoy.'],
   [22, 'Ethiopia', 'Flag carrier probes a loyalty-programme breach.'],
-  [23, 'Brazil', 'Corn ethanol drives a feedlot beef boom.'],
-  [24, 'Venezuela', 'COP31 delegates pitch AI for cleaner oil.'],
+  [34, 'Bogota', 'National strike and marches disrupt transport.'],
+  [35, 'Jakarta', 'Parliament passes asset-forfeiture law.'],
   [25, 'Markets', 'Gold rebounds from a 14-month low.'],
-  [26, 'FIFA', 'Diallo and Tashima challenge FIFA president Infantino.'],
+  [26, 'FIFA', 'Diallo and Tashima challenge president Infantino.'],
   [27, 'Korean peninsula', 'Lee urges renewed talks with the North.'],
   [28, 'Australia', 'Ash Barty wins Tennis Hall of Fame election.'],
   [33, 'Space', 'NASA reports a faster way to find pulsars.'],
 ];
 
 const featureMeta={
-  1:['summit','3 PRESIDENTS'],3:['court','9–6 VERDICT'],5:['climate','DRAFT · CUT'],29:['ipo','$83 → $111'],
-  6:['gaming','FIRST DAY'],31:['cyclone','19 NOV · ALERT'],7:['chips','EXPORT RECORD'],2:['tower','REPORTED'],
+  1:['summit','3 PRESIDENTS'],3:['court','9–6 VERDICT'],5:['climate','DRAFT ISSUED'],29:['ipo','DEBUT'],
+  6:['gaming','LAUNCH DAY'],31:['cyclone','20 NOV FORECAST'],7:['chips','EXPORT MILESTONE'],2:['tower','REPORTED'],
   4:['bridge','TRAINS HALTED'],17:['arctic','109–0 VOTE'],30:['jobs','OCTOBER DATA'],32:['athletics','3-YEAR BAN'],
-  11:['cricket','9 WICKETS'],10:['desert','NEW NASA REPORT'],
+  11:['cricket','9 WICKETS'],10:['desert','NEW REPORT'],
 };
+const dateBasis={1:'Summit held',3:'Judgment delivered',5:'Revised draft published',29:'Trading debut',6:'Game launched',31:'Forecast bulletin issued',7:'Export milestone reported',2:'Damage reported',4:'Rail interruption reported',17:'Pact ratified',30:'October data released',32:'Ban announced',11:'Match result',10:'NASA report published',34:'National strike and marches reported',35:'Asset-forfeiture bill passed',36:'Ambassador ordered to leave'};
 export const stories = edition.map(([ledgerId,title,summary], index) => {
   const source = ledger.find(story => story.id === ledgerId);
   if (!source) throw new Error(`Unknown story ${ledgerId}`);
   const [art,badge]=featureMeta[ledgerId]??[];
-  return {...source, ...updatedSources[ledgerId], id:index+1, art, badge, title, summary};
+  return {...source, ...updatedSources[ledgerId], id:index+1, art, badge, dateBasis:dateBasis[ledgerId]??'Event or report in the dated source ledger',title,summary};
 });
 
 export const regions = [
